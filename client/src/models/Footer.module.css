@@ -1,0 +1,10 @@
+@import "../vars.css";
+
+.main{
+    background-color: var(--secondary-bg-color);
+}
+
+.main_text{
+    font-size: var(--header-font-size);
+    color: var(--header-text-color);
+}

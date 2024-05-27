@@ -1,0 +1,10 @@
+:root{
+    --main-font-size: 16px;
+    --header-font-size: 32px;
+    --main-text-color: #383737; 
+    --header-text-color: black;
+    --font-family: Consolas,monaco,monospace;  
+
+    --main-bg-color: #E0FBE2;
+    --secondary-bg-color: #ACE1AF;
+}

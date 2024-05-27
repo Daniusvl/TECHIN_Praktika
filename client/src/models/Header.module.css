@@ -1,0 +1,13 @@
+@import "../vars.css";
+
+.header{
+    background-color: var(--secondary-bg-color) !important;
+}
+
+.navbar_brand{
+    font-size: var(--header-font-size);
+}
+
+.navbar_collapse{
+    flex-grow: 0 !important;
+}

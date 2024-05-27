@@ -6,21 +6,25 @@ import { UserDashboardPage } from "./pages/UserDashboardPage";
 import { AdminDashboardPage } from "./pages/AdminDashboardPage";
 import { TourPage } from "./pages/TourPage";
 import { UnknownRoutePage } from "./pages/UnknownRoutePage";
+import { Header } from "./models/Header";
+import { Footer } from "./models/Footer";
 
 import styles from "./App.module.css";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = () => {
 
     return (
-
         <div className={styles.main}>
 
-            <div className={styles.header}>
-                Header
-            </div>
+            <BrowserRouter>
+                <div>
+                    <Header />
+                </div>
 
-            <div className={styles.content}>
-                <BrowserRouter>
+
+                <div className={styles.content}>
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/login" element={<LoginPage/>}/>
@@ -30,14 +34,15 @@ const App = () => {
                         <Route path="/tour/:id" element={<TourPage/>}/>
                         <Route path="*" element={<UnknownRoutePage/>}/>
                     </Routes>
-                </BrowserRouter>
-            </div>
+                </div>
 
-            <div className={styles.footer}>
-                Footer
-            </div>
+                <div>
+                    <Footer />
+                </div>
+            </BrowserRouter>
 
         </div>
+
     )
 }
 
