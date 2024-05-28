@@ -9,8 +9,8 @@ import Navbar from 'react-bootstrap/Navbar';
 export const Header = () => {
     return (
         <header>
-            <Navbar expand="lg" className={`bg-body-tertiary ${styles.header}`}>
-                <Container style={{justifyContent: "space-between"}}>
+            <Navbar expand="md" className={`bg-body-tertiary ${styles.header}`}>
+                <Container>
                     <Navbar.Brand as={Link} to="/" className={styles.navbar_brand}>Ekskursijos</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className={styles.navbar_collapse}>
