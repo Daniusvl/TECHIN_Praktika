@@ -5,11 +5,12 @@ import styles from "./Header.module.css";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { classNames } from '../shared/classNames.mjs';
 
 export const Header = () => {
     return (
         <header>
-            <Navbar expand="md" className={`bg-body-tertiary ${styles.header}`}>
+            <Navbar expand="md" className={classNames("bg-body-tertiary", styles.header)}>
                 <Container>
                     <Navbar.Brand as={Link} to="/" className={styles.navbar_brand}>Ekskursijos</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
