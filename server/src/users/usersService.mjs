@@ -49,7 +49,7 @@ export const usersService = {
             return serviceResponse(401, INVALID_EMAIL_OR_PASSWORD);
         }
 
-        const match = bcrypt.compare(password, user.password);
+        const match = await bcrypt.compare(password, user.password);
         if(!match){
             return serviceResponse(401, INVALID_EMAIL_OR_PASSWORD);
         }

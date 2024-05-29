@@ -1,14 +1,15 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { SuccessfulRegistration } from "../../components";
+import { LoginForm, LoginProvider } from "../../models";
 
 export const LoginPage = () => {
 
-    const location = useLocation();
-
     return (
         <div>
-            <h1>{location.state && location.state.fromSuccessfulRegistration && <>Registration Successful!</>}</h1>
-            LoginPage
+            <SuccessfulRegistration />
+            <LoginProvider>
+                <LoginForm/>
+            </LoginProvider>
         </div>
     );
 };

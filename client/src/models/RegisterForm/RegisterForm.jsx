@@ -49,7 +49,7 @@ export const RegisterForm = () => {
     return (
         <Form className={styles.form} onSubmit={handleSubmit(onFormSubmit)}>
             {serverSideError && DisplayServerSideErrorAlert()}
-            <FormGroup label="Email adress" placeholder="example@mail.com" register={register("email", {
+            <FormGroup label="Email address" placeholder="example@mail.com" register={register("email", {
                 pattern: {
                     value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                     message: "Please enter a valid email",
