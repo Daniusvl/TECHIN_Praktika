@@ -11,7 +11,7 @@ import { USER_ROLE, ADMIN_ROLE } from "../../shared/userRoles.mjs";
 export const Header = () => {
 
     const {isAuthenticated, logout, user} = useAuth();
-    console.log(user);
+
     return (
         <header>
             <Navbar expand="md" className={styles.header}>
