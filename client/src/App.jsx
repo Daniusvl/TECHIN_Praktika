@@ -20,7 +20,7 @@ const App = () => {
 
 
                 <div className={classNames("p-2", styles.content)}>
-                    <div id="alert-placement"></div>
+                    <div className={styles.alert_container} id="alert-placement"></div>
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/login" element={<LoginPage/>}/>
