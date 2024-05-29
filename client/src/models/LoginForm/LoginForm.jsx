@@ -6,6 +6,7 @@ import styles from "./LoginForm.module.css";
 import { ButtonControl, DisplayServerSideErrorAlert } from "../../ui/index";
 import { useLogin } from "./hooks/useLogin";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../shared/hooks/useAuth";
 
 export const LoginForm = () => {
     const {
@@ -18,6 +19,8 @@ export const LoginForm = () => {
     } = useForm();
 
     const navigate = useNavigate();
+
+    const { authenticate } = useAuth();
 
     const { login } = useLogin();
 
@@ -37,13 +40,14 @@ export const LoginForm = () => {
                 }
             }
             else{
+                authenticate(data.token);
                 navigate("/");
             }
         } catch (error) {
             setServerSideError(true);
         }
 
-    }, [login, setError, navigate, setServerSideError]);
+    }, [login, setError, navigate, setServerSideError, authenticate]);
 
     return (
         <div className={styles.form_container}>
