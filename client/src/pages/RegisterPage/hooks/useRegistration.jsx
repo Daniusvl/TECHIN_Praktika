@@ -32,11 +32,7 @@ export const RegistrationProvider = ({children}) => {
         }
 
         if(response.status === 500){
-            const errors = [{
-                path: "email",
-                msg: "Server side error"
-            }];
-            return [false, {errors}];
+            throw new Error("Server side error");
         }
         return [true, response.data];
     }, []);

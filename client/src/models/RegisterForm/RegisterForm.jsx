@@ -1,9 +1,9 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import { FormGroup } from "../../components/index";
 import styles from "./RegisterForm.module.css";
-import { ButtonControl } from "../../ui/index";
+import { ButtonControl, DisplayServerSideErrorAlert } from "../../ui/index";
 import { useRegistration } from "../../pages/RegisterPage/hooks/useRegistration";
 import { useNavigate } from "react-router-dom";
 
@@ -22,25 +22,33 @@ export const RegisterForm = () => {
 
     const {registration} = useRegistration();
 
+    const [serverSideError, setServerSideError] = useState(false);
+
     const onFormSubmit = useCallback(async (formFields) => {
-        const [success, data] = await registration(formFields);
-
-        if(!success){
-            const errors = data.errors;
-            for (let i = 0; i < errors.length; i++) {
-                setError(errors[i].path, {
-                    message: errors[i].msg
-                });
+        try {
+            setServerSideError(false);    
+            const [success, data] = await registration(formFields);
+    
+            if(!success){
+                const errors = data.errors;
+                for (let i = 0; i < errors.length; i++) {
+                    setError(errors[i].path, {
+                        message: errors[i].msg
+                    });
+                }
             }
-        }
-        else{
-            navigate("/login", {state:{fromSuccessfulRegistration: true}});
+            else{
+                navigate("/login", {state:{fromSuccessfulRegistration: true}});
+            }
+        } catch (error) {
+            setServerSideError(true);
         }
 
-    }, [registration, setError, navigate]);
+    }, [registration, setError, navigate, setServerSideError]);
 
     return (
         <Form className={styles.form} onSubmit={handleSubmit(onFormSubmit)}>
+            {serverSideError && DisplayServerSideErrorAlert()}
             <FormGroup label="Email adress" placeholder="example@mail.com" register={register("email", {
                 pattern: {
                     value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
