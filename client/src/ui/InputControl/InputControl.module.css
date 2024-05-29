@@ -1,0 +1,5 @@
+@import "../../vars.css";
+
+.input{
+    background-color: var(--main-bg-color) !important;
+}

@@ -1,0 +1,11 @@
+@import "../../vars.css";
+
+.btn_colors{
+    background-color: var(--main-bg-color) !important;
+    
+}
+
+.btn_colors:hover{
+    background-color: white !important;
+    transition: 0.5s;
+}

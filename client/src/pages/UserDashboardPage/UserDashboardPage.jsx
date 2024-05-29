@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
 export const UserDashboardPage = () => {
     return (
         <div>UserDashboardPage</div>
-    )
-}
+    );
+};

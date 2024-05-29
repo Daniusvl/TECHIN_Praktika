@@ -6,4 +6,4 @@ export const classNames = (...classes) => {
     }
 
     return complete.trim();
-}
+};

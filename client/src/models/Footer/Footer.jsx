@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
 import styles from "./Footer.module.css";
-import Stack from 'react-bootstrap/Stack';
-import { classNames } from '../shared/classNames.mjs';
+import Stack from "react-bootstrap/Stack";
+import { classNames } from "../../shared/classNames.mjs";
 
 export const Footer = () => {
     return (
@@ -12,5 +12,5 @@ export const Footer = () => {
                 <div className="p-2 ms-auto">autorius Danielius Vlasenko</div>
             </Stack>
         </footer>
-    )
-}
+    );
+};

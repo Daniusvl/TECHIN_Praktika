@@ -1,0 +1,11 @@
+@import "../../vars.css";
+
+.form{
+    margin-top: 10vh;
+    display: inline-block;
+    min-width: 350px;
+    width: 30vw;
+    padding: 2rem;
+    background-color: var(--secondary-bg-color);
+    border-radius: 10px;
+}
