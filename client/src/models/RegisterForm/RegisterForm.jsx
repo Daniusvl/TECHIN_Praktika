@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import { FormGroup } from "../../components/index";
 import styles from "./RegisterForm.module.css";
 import { ButtonControl, DisplayServerSideErrorAlert } from "../../ui/index";
-import { useRegistration } from "../../pages/RegisterPage/hooks/useRegistration";
+import { useRegistration } from "./hooks/useRegistration";
 import { useNavigate } from "react-router-dom";
 
 export const RegisterForm = () => {

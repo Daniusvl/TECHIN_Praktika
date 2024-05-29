@@ -1,7 +1,6 @@
 import React from "react";
-import { RegisterForm } from "../../models/index.jsx";
+import { RegisterForm, RegistrationProvider } from "../../models/index.jsx";
 import styles from "./RegisterPage.module.css";
-import { RegistrationProvider } from "./hooks/useRegistration.jsx";
 
 export const RegisterPage = () => {
     return (
