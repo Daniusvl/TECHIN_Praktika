@@ -9,7 +9,7 @@ import router from "./src/mainRouter.mjs";
 import { unknownRoute } from "./src/shared/unknonwnRoute.mjs";
 import { errorHandlingMiddleware } from "./src/shared/middleware/errorHandlingMiddleware.mjs";
 import fileUpload from "express-fileupload";
-import { PHOTOS_FOLDER } from "./src/shared/imageHandler.mjs";
+import { PHOTOS_FOLDER, createPhotosFolderIfNotExists } from "./src/shared/imageHandler.mjs";
 
 /* global process */
 
@@ -17,6 +17,8 @@ const app = express();
 
 const startServer = async () => {
     try {
+        createPhotosFolderIfNotExists();
+
         await mongoose.connect(process.env.DB_CONNECTION_STRING);
 
         app.use(cors());

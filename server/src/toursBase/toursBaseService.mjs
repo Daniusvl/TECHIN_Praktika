@@ -24,7 +24,7 @@ export const toursBaseService = {
             imgPath = await WriteFile(image);
         // eslint-disable-next-line no-unused-vars
         } catch (error) {
-            return responseMessage(500, FAILED_TO_UPLOAD_FILE);
+            return serviceResponse(500, FAILED_TO_UPLOAD_FILE);
         }
 
         const tourBase = {
