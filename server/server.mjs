@@ -8,6 +8,8 @@ import { swaggerDoc } from "./src/shared/swaggerDoc.mjs";
 import router from "./src/mainRouter.mjs";
 import { unknownRoute } from "./src/shared/unknonwnRoute.mjs";
 import { errorHandlingMiddleware } from "./src/shared/middleware/errorHandlingMiddleware.mjs";
+import fileUpload from "express-fileupload";
+import { PHOTOS_FOLDER } from "./src/shared/imageHandler.mjs";
 
 /* global process */
 
@@ -23,12 +25,17 @@ const startServer = async () => {
         
         app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
+        app.use(fileUpload({
+            limits: { fileSize: 50 * 1024 * 1024 },
+        }));
+
+        app.use(express.static(`/${PHOTOS_FOLDER}`));
+
         app.use("/api", router);
 
         app.use("*", unknownRoute);
         
         app.use(errorHandlingMiddleware);
-
 
         const port = process.env.PORT || 3000;
 
