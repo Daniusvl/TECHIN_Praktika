@@ -10,4 +10,4 @@ export const toursBaseRouter = express.Router();
 
 toursBaseRouter.post("/", [authMiddleware(ADMIN), createTourBaseValidation, validationMiddleware], toursBaseController.createTourBase);
 toursBaseRouter.put("/", [authMiddleware(ADMIN), updateTourBaseValidation, validationMiddleware], toursBaseController.updateTourBase);
-toursBaseRouter.delete("/:id", [deleteTourBaseValidation, validationMiddleware], toursBaseController.deleteTourBase);
+toursBaseRouter.delete("/:id", [authMiddleware(ADMIN), deleteTourBaseValidation, validationMiddleware], toursBaseController.deleteTourBase);
