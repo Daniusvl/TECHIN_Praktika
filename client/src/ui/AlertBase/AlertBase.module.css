@@ -1,3 +1,7 @@
 .alert{
-    width: 50vw;
+    width: auto;
+    position: fixed !important;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
 }

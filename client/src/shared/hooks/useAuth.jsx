@@ -11,6 +11,7 @@ export const AuthProvider = ({children}) => {
     const [cookies, setCookies, removeCookies] = useCookies();
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const token = cookies.token;
@@ -24,9 +25,13 @@ export const AuthProvider = ({children}) => {
             setUser(null);
             setIsAuthenticated(false);
         }
+
+        setIsLoading(false);
     }, [cookies.token]);
 
     const authenticate = useCallback((token) => {
+        setIsLoading(true);
+
         const payload = jwtDecode(token);
         const user = payload.user;
 
@@ -36,12 +41,18 @@ export const AuthProvider = ({children}) => {
 
         setIsAuthenticated(true);
         setUser(user);
+
+        setIsLoading(false);
     }, [setCookies]);
 
     const logout = useCallback(() => {
+        setIsLoading(true);
+
         removeCookies("token");
         setUser(null);
         setIsAuthenticated(false);
+
+        setIsLoading(false);
     }, [removeCookies]);
 
     return (
@@ -51,7 +62,7 @@ export const AuthProvider = ({children}) => {
             authenticate,
             logout,
         }}>
-            {children}
+            {!isLoading && children}
         </authContext.Provider>
     );
 };
