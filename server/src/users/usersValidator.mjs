@@ -1,5 +1,5 @@
 import { checkSchema } from "express-validator";
-import { isValidObjectId } from "mongoose";
+import { isValidMongooseId } from "../shared/commonValidation.mjs";
 
 const emailValidation = 
 {
@@ -39,9 +39,6 @@ export const LoginValidation = checkSchema({
 export const getByIdValidation = checkSchema({
     id:{
         in:["params"],
-        custom: {
-            options: (value) => isValidObjectId(value),
-            errorMessage: "Id must be a 24 characters long hex string"
-        }
+        custom: isValidMongooseId
     }
 });

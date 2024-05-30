@@ -9,7 +9,7 @@ import router from "./src/mainRouter.mjs";
 import { unknownRoute } from "./src/shared/unknonwnRoute.mjs";
 import { errorHandlingMiddleware } from "./src/shared/middleware/errorHandlingMiddleware.mjs";
 import fileUpload from "express-fileupload";
-import { PHOTOS_FOLDER, createPhotosFolderIfNotExists } from "./src/shared/imageHandler.mjs";
+import { PUBLIC, createPhotosFolderIfNotExists } from "./src/shared/imageHandler.mjs";
 
 /* global process */
 
@@ -31,7 +31,7 @@ const startServer = async () => {
             limits: { fileSize: 50 * 1024 * 1024 },
         }));
 
-        app.use(express.static(`/${PHOTOS_FOLDER}`));
+        app.use(express.static(PUBLIC));
 
         app.use("/api", router);
 

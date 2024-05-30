@@ -1,11 +1,13 @@
 import toursBaseModel from "./toursBaseModel.mjs";
 import { serviceResponse } from "../shared/serviceResponse.mjs";
 import { responseMessage } from "../shared/responseMessage.mjs";
-import { WriteFile } from "../shared/imageHandler.mjs";
+import { updateFile, writeFile } from "../shared/imageHandler.mjs";
 
 const NAME_ALREADY_TAKEN = responseMessage("Name already taken");
 
 const FAILED_TO_UPLOAD_FILE = responseMessage("Failed to upload file to the server");
+
+const TOUR_NOT_FOUND = responseMessage("Tour with specified id not found");
 
 export const toursBaseService = {
     createTourBase: async (data, files) => {
@@ -21,7 +23,7 @@ export const toursBaseService = {
         
         let imgPath;
         try {
-            imgPath = await WriteFile(image);
+            imgPath = await writeFile(image);
         // eslint-disable-next-line no-unused-vars
         } catch (error) {
             return serviceResponse(500, FAILED_TO_UPLOAD_FILE);
@@ -39,5 +41,43 @@ export const toursBaseService = {
         const result = await toursBaseModel.create(tourBase);
 
         return serviceResponse(201, result);
+    },
+
+    updateTourBase: async (data, files) => {
+        const { _id, name, durationInHours, description, price, isSingle } = data;
+
+        const tourBase = await toursBaseModel.findById(_id);
+
+        if(!tourBase){
+            return serviceResponse(409, TOUR_NOT_FOUND);
+        }
+
+        const doesExist = await toursBaseModel.findOne({name});
+
+        if(doesExist && tourBase.name !== doesExist.name){
+            return serviceResponse(409, NAME_ALREADY_TAKEN);
+        }
+
+        let imgPath = tourBase.imgPath;
+
+        if(files && files.image){
+            const {image} = files;
+            try {
+                imgPath = await updateFile(image, tourBase.imgPath);
+                // eslint-disable-next-line no-unused-vars
+            } catch (error) {
+                return serviceResponse(500, FAILED_TO_UPLOAD_FILE);
+            }
+        }
+
+        tourBase.name = name;
+        tourBase.durationInHours = durationInHours;
+        tourBase.description = description;
+        tourBase.price = price;
+        tourBase.isSingle = isSingle;
+        tourBase.imgPath = imgPath;
+        await tourBase.save();
+
+        return serviceResponse(200, tourBase);
     }
 };

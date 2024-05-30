@@ -1,5 +1,6 @@
 import { checkSchema } from "express-validator";
 import { imageExtensions } from "../shared/config/imageExtensions.mjs";
+import { isValidMongooseId } from "../shared/commonValidation.mjs";
 
 const nameValidation = 
 {
@@ -69,6 +70,31 @@ export const createTourBaseValidation = checkSchema({
             options: (value, { req }) => {
                 if(!req.files || !req.files.image){
                     throw new Error("image must be provided");
+                }
+                const { image } = req.files;
+                if(image.name && imageExtensions.filter(ext => image.name.includes(ext)).length > 0){
+                    return true;
+                }
+                throw new Error(`image must be a file with specified extensions ${imageExtensions.join(", ")}`);
+            }
+        }
+    }
+});
+
+export const updateTourBaseValidation = checkSchema({
+    _id: {
+        custom: isValidMongooseId
+    },
+    name: nameValidation,
+    description: descriptionValidation,
+    price: priceValidation,
+    durationInHours:durationInHoursValidation,
+    isSingle: isSingleValidation,
+    image:{
+        custom: {
+            options: (value, { req }) => {
+                if(!req.files || !req.files.image){
+                    return true;
                 }
                 const { image } = req.files;
                 if(image.name && imageExtensions.filter(ext => image.name.includes(ext)).length > 0){
