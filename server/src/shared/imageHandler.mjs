@@ -26,7 +26,11 @@ export const writeFile = async (file) => {
 };
 
 export const deleteFile = async (imgPath) => {
-    await fs.unlink(path.join(process.cwd(), PUBLIC, imgPath));
+    try {
+        await fs.unlink(path.join(process.cwd(), PUBLIC, imgPath));
+    } catch (error) {
+        console.log(`Failed to delete ${imgPath}: ${error}`);
+    }
 };
 
 export const updateFile = async (file, imgPath) => {  

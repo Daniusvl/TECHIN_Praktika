@@ -90,11 +90,7 @@ export const toursBaseService = {
             return serviceResponse(404, TOUR_NOT_FOUND);
         }
 
-        try {
-            await deleteFile(tourBase.imgPath);
-        } catch (error) {
-            console.log(`Database document ${tourBase} was deleted but ${tourBase.imgPath} delete failed: ${error}`);
-        }
+        await deleteFile(tourBase.imgPath);
 
         return serviceResponse(200, SUCCESS);
     }
