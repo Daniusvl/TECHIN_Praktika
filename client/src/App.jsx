@@ -30,31 +30,33 @@ const App = () => {
 
 
                 <div className={classNames("p-2", styles.content)}>
-                    <div className={styles.alert_container} id="alert-placement">
-                        {
-                            displayAccessDenied && 
-                            <AlertBase variant="danger" heading="Access denied" onClose={hideAccessDenied} show={displayAccessDenied} >
-                                <p>You dont have privileges to access this page</p>
-                            </AlertBase>
-                        }
-                    </div>
-                    <Routes>
-                        <Route path="/" element={<HomePage/>}/>
-                        <Route path="/login" element={<LoginPage/>}/>
-                        <Route path="/register" element={<RegisterPage/>}/>
-                        <Route path="/dashboard" element={
-                            <PrivateRoute showAccessDenied={showAccessDenied} role={USER_ROLE}>
-                                <UserDashboardPage/>
-                            </PrivateRoute>
-                        }/>
-                        <Route path="/admin-dashboard" element={
-                            <PrivateRoute showAccessDenied={showAccessDenied} role={ADMIN_ROLE}>
-                                <AdminDashboardPage/>
-                            </PrivateRoute>
-                        }/>
-                        <Route path="/tour/:id" element={<TourPage/>}/>
-                        <Route path="*" element={<UnknownRoutePage/>}/>
-                    </Routes>
+                    <main>
+                        <div className={styles.alert_container} id="alert-placement">
+                            {
+                                displayAccessDenied && 
+                                <AlertBase variant="danger" heading="Access denied" onClose={hideAccessDenied} show={displayAccessDenied} >
+                                    <p>You dont have privileges to access this page</p>
+                                </AlertBase>
+                            }
+                        </div>
+                        <Routes>
+                            <Route path="/" element={<HomePage/>}/>
+                            <Route path="/login" element={<LoginPage/>}/>
+                            <Route path="/register" element={<RegisterPage/>}/>
+                            <Route path="/dashboard" element={
+                                <PrivateRoute showAccessDenied={showAccessDenied} role={USER_ROLE}>
+                                    <UserDashboardPage/>
+                                </PrivateRoute>
+                            }/>
+                            <Route path="/admin-dashboard" element={
+                                <PrivateRoute showAccessDenied={showAccessDenied} role={ADMIN_ROLE}>
+                                    <AdminDashboardPage/>
+                                </PrivateRoute>
+                            }/>
+                            <Route path="/tour/:id" element={<TourPage/>}/>
+                            <Route path="*" element={<UnknownRoutePage/>}/>
+                        </Routes>
+                    </main>
                 </div>
 
                 <div>
