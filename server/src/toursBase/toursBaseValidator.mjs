@@ -105,3 +105,10 @@ export const updateTourBaseValidation = checkSchema({
         }
     }
 });
+
+export const deleteTourBaseValidation = checkSchema({
+    id: {
+        in: ["params"],
+        custom: isValidMongooseId
+    }
+});

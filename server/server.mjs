@@ -17,7 +17,7 @@ const app = express();
 
 const startServer = async () => {
     try {
-        createPhotosFolderIfNotExists();
+        await createPhotosFolderIfNotExists();
 
         await mongoose.connect(process.env.DB_CONNECTION_STRING);
 

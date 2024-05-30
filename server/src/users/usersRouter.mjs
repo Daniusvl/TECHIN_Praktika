@@ -3,6 +3,7 @@ import { usersController } from "./UsersController.mjs";
 import { RegisterValidation, LoginValidation, getByIdValidation } from "./usersValidator.mjs";
 import { validationMiddleware } from "../shared/middleware/validationMiddleware.mjs";
 import { authMiddleware } from "../shared/middleware/authMiddleware.mjs";
+import { USER } from "../shared/config/UserRoles.mjs";
 
 const usersRouter = express.Router();
 
@@ -203,6 +204,6 @@ usersRouter.post("/login", [LoginValidation, validationMiddleware], usersControl
 *                               schema:
 *                                   $ref: '#/components/schemas/Error'
 */
-usersRouter.get("/:id", [authMiddleware("USER"), getByIdValidation, validationMiddleware], usersController.getUserById);
+usersRouter.get("/:id", [authMiddleware(USER), getByIdValidation, validationMiddleware], usersController.getUserById);
 
 export {usersRouter};

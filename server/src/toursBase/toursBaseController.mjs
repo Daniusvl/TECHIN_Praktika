@@ -16,5 +16,13 @@ export const toursBaseController = {
         } catch (error) {
             next(error);
         }
+    },
+    deleteTourBase: async (req, res, next) => {
+        try {
+            const {statusCode, data} = await toursBaseService.deleteTourBase(req.params.id);
+            return res.status(statusCode).json(data);
+        } catch (error) {
+            next(error);
+        }
     }
 };

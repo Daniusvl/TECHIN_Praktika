@@ -1,13 +1,15 @@
 import toursBaseModel from "./toursBaseModel.mjs";
 import { serviceResponse } from "../shared/serviceResponse.mjs";
 import { responseMessage } from "../shared/responseMessage.mjs";
-import { updateFile, writeFile } from "../shared/imageHandler.mjs";
+import { updateFile, writeFile, deleteFile } from "../shared/imageHandler.mjs";
 
 const NAME_ALREADY_TAKEN = responseMessage("Name already taken");
 
 const FAILED_TO_UPLOAD_FILE = responseMessage("Failed to upload file to the server");
 
 const TOUR_NOT_FOUND = responseMessage("Tour with specified id not found");
+
+const SUCCESS = responseMessage("Success");
 
 export const toursBaseService = {
     createTourBase: async (data, files) => {
@@ -49,7 +51,7 @@ export const toursBaseService = {
         const tourBase = await toursBaseModel.findById(_id);
 
         if(!tourBase){
-            return serviceResponse(409, TOUR_NOT_FOUND);
+            return serviceResponse(404, TOUR_NOT_FOUND);
         }
 
         const doesExist = await toursBaseModel.findOne({name});
@@ -79,5 +81,21 @@ export const toursBaseService = {
         await tourBase.save();
 
         return serviceResponse(200, tourBase);
+    },
+
+    deleteTourBase: async (id) => {
+        const tourBase = await toursBaseModel.findOneAndDelete({_id: id});
+
+        if(!tourBase){
+            return serviceResponse(404, TOUR_NOT_FOUND);
+        }
+
+        try {
+            await deleteFile(tourBase.imgPath);
+        } catch (error) {
+            console.log(`Database document ${tourBase} was deleted but ${tourBase.imgPath} delete failed: ${error}`);
+        }
+
+        return serviceResponse(200, SUCCESS);
     }
 };

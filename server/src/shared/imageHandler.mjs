@@ -1,6 +1,6 @@
 import path from "path";
 import uniqid from "uniqid";
-import fs from "fs";
+import fs from "fs/promises";
 
 // PRIMINIMAS MAN PACIAM: DUOMENU BAZEJE SAUGOMAS NEPILNAS PATH IKI NUOTRAUKOS
 // DUOMENU BAZEJE SAUGOMAS PATH BE PUBLIC FOLDERIO, KAD KLIENTUI DUOTI TEISINGA IR PATOGU PATH
@@ -25,16 +25,16 @@ export const writeFile = async (file) => {
     return pathForClient;
 };
 
+export const deleteFile = async (imgPath) => {
+    await fs.unlink(path.join(process.cwd(), PUBLIC, imgPath));
+};
+
 export const updateFile = async (file, imgPath) => {  
     const newExtension = path.extname(file.name);
     const currentExtension = path.extname(imgPath);
     if(newExtension !== currentExtension){
         const originalPath = imgPath;
-        fs.unlink(path.join(process.cwd(), PUBLIC, originalPath), err => {
-            if(err){
-                throw err;
-            }
-        });
+        await deleteFile(originalPath);
         imgPath = imgPath.substring(0, imgPath.length-currentExtension.length);
         imgPath += newExtension;
     }
@@ -42,12 +42,6 @@ export const updateFile = async (file, imgPath) => {
     return imgPath;
 };
 
-export const createPhotosFolderIfNotExists = () => {
-    fs.mkdir(path.join(process.cwd(), FULL_PHOTOS_PATH), { recursive:true },
-        (err) => {
-            if(err){
-                throw err;
-            }
-        }
-    );
+export const createPhotosFolderIfNotExists = async () => {
+    await fs.mkdir(path.join(process.cwd(), FULL_PHOTOS_PATH), { recursive:true });
 };
