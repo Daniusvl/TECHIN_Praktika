@@ -27,7 +27,10 @@ export const LoginForm = () => {
 
     const [serverSideError, setServerSideError] = useState(false);
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const onFormSubmit = useCallback(async (formFields) => {
+        setIsLoading(true);
         try {
             setServerSideError(false);    
             const [success, data] = await login(formFields);
@@ -47,7 +50,7 @@ export const LoginForm = () => {
         } catch (error) {
             setServerSideError(true);
         }
-
+        setIsLoading(false);
     }, [login, setError, navigate, setServerSideError, authenticate]);
 
     return (
@@ -79,7 +82,7 @@ export const LoginForm = () => {
                     }
                 })} errors={errors.password}/>
 
-                <ButtonControl>login</ButtonControl>
+                <ButtonControl isLoading={isLoading}>login</ButtonControl>
             </Form>
         </div>
     );

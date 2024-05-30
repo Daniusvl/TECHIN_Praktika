@@ -25,7 +25,10 @@ export const RegisterForm = () => {
 
     const [serverSideError, setServerSideError] = useState(false);
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const onFormSubmit = useCallback(async (formFields) => {
+        setIsLoading(true);
         try {
             setServerSideError(false);    
             const [success, data] = await registration(formFields);
@@ -44,7 +47,7 @@ export const RegisterForm = () => {
         } catch (error) {
             setServerSideError(true);
         }
-
+        setIsLoading(false);
     }, [registration, setError, navigate, setServerSideError]);
 
     return (
@@ -85,7 +88,7 @@ export const RegisterForm = () => {
                     message: "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
                 }
             })} errors={errors.repeatPassword}/>
-            <ButtonControl>Register</ButtonControl>
+            <ButtonControl isLoading={isLoading}>Register</ButtonControl>
         </Form>
     );
 };
