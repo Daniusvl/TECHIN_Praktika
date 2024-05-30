@@ -11,3 +11,7 @@
 .navbar_collapse{
     flex-grow: 0 !important;
 }
+
+.expand_btn{
+    background-color: var(--main-bg-color);
+}

@@ -14,10 +14,10 @@ export const Header = () => {
 
     return (
         <header>
-            <Navbar expand="md" className={styles.header}>
+            <Navbar expand="sm" className={styles.header}>
                 <Container>
                     <Navbar.Brand as={Link} to="/" className={styles.navbar_brand}>Tours</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.expand_btn}/>
                     <Navbar.Collapse id="basic-navbar-nav" className={styles.navbar_collapse}>
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to="/">Home</Nav.Link>
