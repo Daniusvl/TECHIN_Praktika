@@ -4,7 +4,7 @@ import cors from "cors";
 import swaggerUI from "swagger-ui-express";
 import mongoose from "mongoose";
 
-import { swaggerDoc } from "./src/shared/swaggerDoc.mjs";
+import { swaggerDoc } from "./src/shared/config/swaggerDoc.mjs";
 import router from "./src/mainRouter.mjs";
 import { unknownRoute } from "./src/shared/unknonwnRoute.mjs";
 import { errorHandlingMiddleware } from "./src/shared/middleware/errorHandlingMiddleware.mjs";
