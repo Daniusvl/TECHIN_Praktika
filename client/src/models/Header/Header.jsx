@@ -16,7 +16,7 @@ export const Header = () => {
         <header>
             <Navbar expand="md" className={styles.header}>
                 <Container>
-                    <Navbar.Brand as={Link} to="/" className={styles.navbar_brand}>Ekskursijos</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/" className={styles.navbar_brand}>Tours</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className={styles.navbar_collapse}>
                         <Nav className="me-auto">

@@ -9,7 +9,11 @@
     display: inline-block;
     min-width: 350px;
     width: 30vw;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem 2rem;
     background-color: var(--secondary-bg-color);
     border-radius: 10px;
+}
+
+.form_header{
+    font-size: var(--header-font-size);
 }

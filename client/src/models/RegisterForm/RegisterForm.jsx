@@ -6,6 +6,7 @@ import styles from "./RegisterForm.module.css";
 import { ButtonControl, DisplayServerSideErrorAlert } from "../../ui/index";
 import { useRegistration } from "./hooks/useRegistration";
 import { useNavigate } from "react-router-dom";
+import { classNames } from "../../shared/classNames.mjs";
 
 export const RegisterForm = () => {
 
@@ -49,6 +50,7 @@ export const RegisterForm = () => {
     return (
         <Form className={styles.form} onSubmit={handleSubmit(onFormSubmit)}>
             {serverSideError && DisplayServerSideErrorAlert()}
+            <div className={classNames("mb-3", styles.form_header)}>Registration</div>
             <FormGroup label="Email address" placeholder="example@mail.com" register={register("email", {
                 pattern: {
                     value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,

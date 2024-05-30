@@ -7,6 +7,7 @@ import { ButtonControl, DisplayServerSideErrorAlert } from "../../ui/index";
 import { useLogin } from "./hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../shared/hooks/useAuth";
+import { classNames } from "../../shared/classNames.mjs";
 
 export const LoginForm = () => {
     const {
@@ -54,6 +55,9 @@ export const LoginForm = () => {
             {serverSideError && DisplayServerSideErrorAlert()}
 
             <Form className={styles.form} onSubmit={handleSubmit(onFormSubmit)}>
+
+                <div className={classNames("mb-3", styles.form_header)}>Login</div>
+
                 <FormGroup label="Email address" placeholder="example@mail.com" register={register("email", {
                     pattern: {
                         value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
