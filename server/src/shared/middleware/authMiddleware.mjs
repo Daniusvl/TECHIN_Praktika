@@ -10,7 +10,7 @@ const UNAUTHORIZED_ACCESS = responseMessage("Unauthorized access");
 const ACCESS_DENIED = responseMessage("Access denied");
 
 export const authMiddleware = (...roles) => {
-    return async function AuthMiddleware(req, res, next){
+    return async function(req, res, next){
         try{
             const authHeader = req.get("Authorization");
             if(!authHeader){
