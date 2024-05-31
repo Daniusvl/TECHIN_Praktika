@@ -2,14 +2,14 @@ import toursBaseModel from "./toursBaseModel.mjs";
 import { serviceResponse } from "../shared/serviceResponse.mjs";
 import { responseMessage } from "../shared/responseMessage.mjs";
 import { updateFile, writeFile, deleteFile } from "../shared/imageHandler.mjs";
+import { SUCCESS } from "../shared/commonResponseMessages.mjs";
+import { toursInstanceService } from "../toursInstance/index.mjs";
 
 const NAME_ALREADY_TAKEN = responseMessage("Name already taken");
 
 const FAILED_TO_UPLOAD_FILE = responseMessage("Failed to upload file to the server");
 
-const TOUR_NOT_FOUND = responseMessage("Tour with specified id not found");
-
-const SUCCESS = responseMessage("Success");
+export const TOUR_NOT_FOUND = responseMessage("Tour with specified id not found");
 
 export const toursBaseService = {
     createTourBase: async (data, files) => {
@@ -84,6 +84,13 @@ export const toursBaseService = {
     },
 
     deleteTourBase: async (id) => {
+
+        const { statusCode } = await toursInstanceService.deleteAllTourInstances(id);
+
+        if(statusCode !== 200){
+            return serviceResponse(404, TOUR_NOT_FOUND);
+        }
+
         const tourBase = await toursBaseModel.findOneAndDelete({_id: id});
 
         if(!tourBase){
@@ -93,5 +100,15 @@ export const toursBaseService = {
         await deleteFile(tourBase.imgPath);
 
         return serviceResponse(200, SUCCESS);
+    },
+
+    getTourBaseById: async (id) => {
+        const tourBase = await toursBaseModel.findById(id);
+
+        if(!tourBase){
+            return serviceResponse(404, TOUR_NOT_FOUND);
+        }
+
+        return serviceResponse(200, tourBase);
     }
 };

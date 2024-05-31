@@ -1,6 +1,7 @@
 import express from "express";
 import { usersRouter } from "./users/index.mjs";
 import { toursBaseRouter } from "./toursBase/index.mjs";
+import { toursInstanceRouter } from "./toursInstance/index.mjs";
 
 const router = express.Router();
 
@@ -50,5 +51,7 @@ const router = express.Router();
 router.use("/users", usersRouter);
 
 router.use("/toursBase", toursBaseRouter);
+
+router.use("/toursInstance", toursInstanceRouter);
 
 export default router;
