@@ -1,7 +1,8 @@
-import { toursInstanceService } from "./toursInstanceService.mjs";
+import { toursInstanceService, TOUR_DATE_NOT_FOUND } from "./toursInstanceService.mjs";
 import { toursInstanceRouter } from "./toursInstanceRouter.mjs";
 
 export {
     toursInstanceService,
-    toursInstanceRouter
+    toursInstanceRouter,
+    TOUR_DATE_NOT_FOUND
 };

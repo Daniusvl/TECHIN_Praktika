@@ -43,6 +43,8 @@ export const authMiddleware = (...roles) => {
                 return res.status(403).json(ACCESS_DENIED);
             }
 
+            req.user = user;
+
             next();
         }
         catch(error){

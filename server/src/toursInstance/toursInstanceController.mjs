@@ -17,5 +17,14 @@ export const toursInstanceController = {
         } catch (error) {
             next(error);
         }
+    },
+
+    getAllUpcomingTourBaseTourInstances: async (req, res, next) => {
+        try {
+            const {statusCode, data} = await toursInstanceService.getAllUpcomingTourBaseTourInstances(req.params.tourBaseId);
+            return res.status(statusCode).json(data);
+        } catch (error) {
+            next(error);
+        }
     }
 };
