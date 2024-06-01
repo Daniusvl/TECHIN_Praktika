@@ -3,7 +3,8 @@ import { serviceResponse } from "../../shared/serviceResponse.mjs";
 import { responseMessage } from "../../shared/responseMessage.mjs";
 import { SUCCESS } from "../../shared/commonResponseMessages.mjs";
 import { toursInstanceService } from "../../toursInstance/index.mjs";
-import { APPROVED, PROCESSING, maxActiveTourCandidatesForOneUser, historyPageItemCount } from "../../shared/config/tourCandidates.mjs";
+import { APPROVED, PROCESSING, maxActiveTourCandidatesForOneUser, userHistoryPageItemCount } from "../../shared/config/tourCandidates.mjs";
+import { generateTourCandidatesPipeline } from "./tourCandidatesPiepline.mjs";
 
 const DATE_NOT_FOUND = responseMessage("Tour with specified date does not exist");
 
@@ -23,86 +24,23 @@ const MAX_COUNT_REACHED = responseMessage(`You exceeded your maximum allowed act
 
 export const tourCandidatesUserService = {
     getMyActiveTourCandidates: async (user) => {
-        const tourCandidates = await tourCandidatesModel.aggregate([
-            {
-                $match: { user: user._id }
-            },
-            {
-                $lookup: {
-                    from: "ToursInstance",
-                    localField: "tourInstance",
-                    foreignField: "_id",
-                    as: "tourInstance",
-                    pipeline: [
-                        {
-                            $match: { 
-                                startDate: { $gte: new Date() }
-                            }
-                        },
-                        {
-                            $lookup: {
-                                from: "ToursBase",
-                                localField: "tourBase",
-                                foreignField: "_id",
-                                as: "tourBase"
-                            }
-                        },
-                        {
-                            $unwind: "$tourBase"
-                        }
-                    ]
-                }
-            },
-            {
-                $unwind: "$tourInstance"
-            },
-        ]);
-
+        const tourCandidates = await tourCandidatesModel.aggregate(
+            generateTourCandidatesPipeline(user._id, {$gte:new Date()}));
+        
         return serviceResponse(200, tourCandidates);
     },
 
     getMyHistoryTourCandidates: async (user, page) => {
         const pipelineResult = await tourCandidatesModel.aggregate([
-            {
-                $match: { user: user._id }
-            },
-            {
-                $lookup: {
-                    from: "ToursInstance",
-                    localField: "tourInstance",
-                    foreignField: "_id",
-                    as: "tourInstance",
-                    pipeline: [
-                        {
-                            $match: { 
-                                startDate: { $lt: new Date() }
-                            }
-                        },
-                        {
-                            $lookup: {
-                                from: "ToursBase",
-                                localField: "tourBase",
-                                foreignField: "_id",
-                                as: "tourBase"
-                            }
-                        },
-                        {
-                            $unwind: "$tourBase"
-                        }
-                    ]
-                }
-            },
-            {
-                $unwind: "$tourInstance"
-            },
+            ...generateTourCandidatesPipeline(user._id, {$lt:new Date()}),
             {
                 $facet: {
                     data: [
                         {
-                            $skip: historyPageItemCount*page-historyPageItemCount
+                            $skip: userHistoryPageItemCount*page-userHistoryPageItemCount
                         },
                         {
-                            $limit: historyPageItemCount
+                            $limit: userHistoryPageItemCount
                         }
                     ],
                     totalCount: [
@@ -121,7 +59,7 @@ export const tourCandidatesUserService = {
         
         const tourCandidates = pipelineResult[0];
 
-        tourCandidates.pageCount = Math.ceil(tourCandidates.pageCount / historyPageItemCount);
+        tourCandidates.pageCount = Math.ceil(tourCandidates.pageCount / userHistoryPageItemCount);
 
         return serviceResponse(200, tourCandidates);
     },
