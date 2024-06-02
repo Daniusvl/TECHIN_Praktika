@@ -7,5 +7,5 @@ export const errorHandlingMiddleware = (error, req, res, next) => {
 
     console.error(error);
     
-    res.status(500).json({ message: SERVER_SIDE_ERROR });
+    res.status(500).json(SERVER_SIDE_ERROR);
 };
