@@ -18,3 +18,5 @@ export const userHistoryPageItemCount = 10;
 export const adminActivePageItemCount = 20;
 
 export const adminHistoryPageItemCount = 20;
+
+export const mainTourPageItemCount = 10;

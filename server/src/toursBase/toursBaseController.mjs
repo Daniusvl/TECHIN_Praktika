@@ -1,6 +1,15 @@
 import { toursBaseService } from "./toursBaseService.mjs";
 
 export const toursBaseController = {
+    getToursBase: async (req, res, next) => {
+        try {
+            const {statusCode, data} = await toursBaseService.getToursBase(req.query, req.params.page);
+            return res.status(statusCode).json(data);
+        } catch (error) {
+            next(error);
+        }
+    },
+
     createTourBase: async (req, res, next) => {
         try {
             const {statusCode, data} = await toursBaseService.createTourBase(req.body, req.files);

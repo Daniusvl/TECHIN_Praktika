@@ -24,6 +24,10 @@ export const changeTourInstanceValdiation = checkSchema({
     }
 });
 
+export const minReview = 1;
+
+export const maxReview = 10;
+
 export const leaveReviewValidation = checkSchema({
     tourCandidateId:{
         custom: isValidMongooseId
@@ -33,8 +37,8 @@ export const leaveReviewValidation = checkSchema({
             errorMessage: "Score must be a valid number"
         },
         custom:{
-            options: (value) => value > 0 && value < 11,
-            errorMessage: "Score must be a number between 1 and 10"
+            options: (value) => value >= minReview && value <= maxReview,
+            errorMessage: `Score must be a number between ${minReview} and ${maxReview}`
         }
     },
     review:{

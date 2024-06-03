@@ -4,6 +4,8 @@ import { responseMessage } from "../shared/responseMessage.mjs";
 import { updateFile, writeFile, deleteFile } from "../shared/imageHandler.mjs";
 import { SUCCESS } from "../shared/commonResponseMessages.mjs";
 import { toursInstanceService } from "../toursInstance/index.mjs";
+import { mainTourPageItemCount } from "../shared/config/tourCandidates.mjs";
+import { getPipeline } from "./toursBasePipeline.mjs";
 
 const NAME_ALREADY_TAKEN = responseMessage("Name already taken");
 
@@ -12,6 +14,15 @@ const FAILED_TO_UPLOAD_FILE = responseMessage("Failed to upload file to the serv
 export const TOUR_NOT_FOUND = responseMessage("Tour with specified id not found");
 
 export const toursBaseService = {
+    getToursBase: async (args, page) => {
+        const pipelineResult = await toursBaseModel.aggregate(getPipeline(args, page));
+
+        const data = pipelineResult[0];
+        data.pageCount = Math.ceil(data.pageCount / mainTourPageItemCount);
+
+        return serviceResponse(200, data);
+    },
+
     createTourBase: async (data, files) => {
         const { name, durationInHours, description, price, isSingle } = data;
 
