@@ -1,6 +1,6 @@
 import { checkSchema } from "express-validator";
 import { imageExtensions } from "../shared/config/imageExtensions.mjs";
-import { isValidMongooseId } from "../shared/commonValidation.mjs";
+import { isValidMongooseId, isBoolean, isNumber } from "../shared/commonValidation.mjs";
 
 const nameValidation = 
 {
@@ -75,35 +75,16 @@ const sortByArray = [
     "durationInHours"
 ];
 
-const booleanSanitizer = (fieldName) => {
-    return {
-        options: (value) => {
-            if(value === undefined || value === null || value === "false" || value === false || value === 0){
-                return false;
-            }
-            else return true;
-        },
-        errorMessage: `${fieldName} must be a boolean`
-    };
-};
-
-const numberSanitizer = (fieldName) => {
-    return {
-        options: (value) => Number(value),
-        errorMessage: `${fieldName} must be a number`
-    };
-};
-
 export const getToursBaseValidator = checkSchema({
     priceFree:{
         in:["query"],
         optional: true,
-        customSanitizer: booleanSanitizer("priceFree")
+        ...isBoolean("priceFree")
     },
     minPrice: {
         in:["query"],
         optional: true,
-        customSanitizer: numberSanitizer("minPrice"),
+        ...isNumber("minPrice"),
         custom: {
             options: (value, {req}) => {
                 console.log("typeof value", typeof value);
@@ -117,7 +98,7 @@ export const getToursBaseValidator = checkSchema({
     maxPrice: {
         in:["query"],
         optional: true,
-        customSanitizer: numberSanitizer("maxPrice"),
+        ...isNumber("maxPrice"),
         custom: {
             options: (value, {req}) => {
                 if(value < req.query.minPrice){
@@ -130,17 +111,17 @@ export const getToursBaseValidator = checkSchema({
     singleOnly:{
         in:["query"],
         optional: true,
-        customSanitizer: booleanSanitizer("singleOnly")
+        ...isBoolean("singleOnly")
     },
     multipleOnly:{
         in:["query"],
         optional: true,
-        customSanitizer: booleanSanitizer("multipleOnly")
+        ...isBoolean("multipleOnly")
     },
     minDuration: {
         in:["query"],
         optional: true,
-        customSanitizer: numberSanitizer("minDuration"),
+        ...isNumber("minDuration"),
         custom: {
             options: (value, {req}) => {
                 if(value > req.query.maxDuration){
@@ -153,7 +134,7 @@ export const getToursBaseValidator = checkSchema({
     maxDuration: {
         in:["query"],
         optional: true,
-        customSanitizer: numberSanitizer("maxDuration"),
+        ...isNumber("maxDuration"),
         custom: {
             options: (value, {req}) => {
                 if(value < req.query.minDuration){
@@ -166,7 +147,7 @@ export const getToursBaseValidator = checkSchema({
     minScore: {
         in:["query"],
         optional: true,
-        customSanitizer: numberSanitizer("minScore"),
+        ...isNumber("minScore"),
         custom: {
             options: (value, {req}) => {
                 if(value > req.query.maxScore){
@@ -179,7 +160,7 @@ export const getToursBaseValidator = checkSchema({
     maxScore: {
         in:["query"],
         optional: true,
-        customSanitizer: numberSanitizer("maxScore"),
+        ...isNumber("maxScore"),
         custom: {
             options: (value, {req}) => {
                 if(value < req.query.minScore){
@@ -203,7 +184,7 @@ export const getToursBaseValidator = checkSchema({
     desc:{
         in:["query"],
         optional: true,
-        customSanitizer: booleanSanitizer("desc")
+        ...isBoolean("desc")
     },
     sortBy:{
         in:["query"],
