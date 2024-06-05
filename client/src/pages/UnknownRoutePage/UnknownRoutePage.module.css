@@ -1,0 +1,19 @@
+@import "../../vars.css";
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.textContainer{
+    padding: 4rem;
+    border-radius: 2rem;
+    background-color: var(--secondary-bg-color);
+}
+
+.text{
+    color: var(--header-text-color);
+    font-size: var(--header-font-size);
+}

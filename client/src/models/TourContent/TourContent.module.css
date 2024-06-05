@@ -7,6 +7,23 @@
     min-height: 60vh;
 }
 
+.defaultContainer{
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.noTourMessage{
+    color: var(--header-text-color);
+    font-size: var(--header-font-size);
+}
+
+.spinner{
+    width: 17rem;
+    height: 17rem;
+}
+
 .grid_container{
     display: grid;
     grid-template-columns: repeat(auto-fill, 20rem);

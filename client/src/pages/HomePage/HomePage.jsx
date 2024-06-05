@@ -83,7 +83,7 @@ export const HomePage = () => {
                 </div>
                 <div className={styles.content}>
                     <TourContentHeader setSortBy={setSortBy} setSortOrder={setSortOrder} page={currentPage} setPage={setCurrentPage} lastPage={pageCount} />
-                    <TourContent tours={tours} />
+                    <TourContent isLoading={toursLoading} tours={tours} />
                 </div>
             </div>
         </Stack>

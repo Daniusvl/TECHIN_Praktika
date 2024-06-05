@@ -6,6 +6,7 @@ import { FilterCategory } from "./FilterCategory/FilterCategory";
 import { MultiRangeSlider } from "./MultiRangeSlider/MultiRangeSlider";
 import { CardItem } from "./CardItem/CardItem";
 import { PaginationItem } from "./PaginationItem/PaginationItem";
+import { Spinner } from "./Spinner/Spinner";
 
 export {
     ButtonControl,
@@ -15,5 +16,6 @@ export {
     FilterCategory,
     MultiRangeSlider,
     CardItem,
-    PaginationItem
+    PaginationItem,
+    Spinner
 };
