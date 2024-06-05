@@ -5,6 +5,7 @@ import { RegisterPage } from "./RegisterPage/RegisterPage";
 import { TourPage } from "./TourPage/TourPage";
 import { UnknownRoutePage } from "./UnknownRoutePage/UnknownRoutePage";
 import { UserDashboardPage } from "./UserDashboardPage/UserDashboardPage";
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 export {
     AdminDashboardPage,
@@ -13,5 +14,6 @@ export {
     RegisterPage,
     TourPage,
     UnknownRoutePage,
-    UserDashboardPage
+    UserDashboardPage,
+    ErrorBoundary
 };
