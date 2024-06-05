@@ -4,7 +4,7 @@ import { LoginForm, LoginProvider } from "../../models";
 import { useAuth } from "../../shared/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
-export const LoginPage = () => {
+const LoginPage = () => {
 
     const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
@@ -25,3 +25,5 @@ export const LoginPage = () => {
         </div>
     );
 };
+
+export default LoginPage;

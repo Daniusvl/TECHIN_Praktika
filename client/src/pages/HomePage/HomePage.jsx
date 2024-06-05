@@ -7,7 +7,7 @@ import styles from "./HomePage.module.css";
 import { tourBaseModel } from "../../shared/api/tourBaseModel";
 import { classNames } from "../../shared/classNames.mjs";
 
-export const HomePage = () => {
+const HomePage = () => {
 
     const [sortBy, setSortBy] = useState("name");
     const [sortOrder, setSortOrder] = useState("false");
@@ -89,3 +89,5 @@ export const HomePage = () => {
         </Stack>
     );
 };
+
+export default HomePage;

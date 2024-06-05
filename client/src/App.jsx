@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HomePage, LoginPage, RegisterPage, UserDashboardPage, AdminDashboardPage, TourPage, UnknownRoutePage, ErrorBoundary } from "./pages/index.jsx";
+import { HomePage, LoginPage, RegisterPage, UserDashboardPage, AdminDashboardPage, TourPage, UnknownRoutePage, ErrorBoundary, SuspenseFallbackPage } from "./pages/index.jsx";
 import { Header, Footer } from "./models/index.jsx";
 import { AuthProvider } from "./shared/hooks/useAuth";
 
@@ -43,21 +43,45 @@ const App = () => {
                                     }
                                 </div>
                                 <Routes>
-                                    <Route path="/" element={<HomePage/>}/>
-                                    <Route path="/login" element={<LoginPage/>}/>
-                                    <Route path="/register" element={<RegisterPage/>}/>
+                                    <Route path="/" element={
+                                        <Suspense fallback={<SuspenseFallbackPage />}>
+                                            <HomePage/>
+                                        </Suspense>
+                                    }/>
+                                    <Route path="/login" element={
+                                        <Suspense fallback={<SuspenseFallbackPage />}>
+                                            <LoginPage/>
+                                        </Suspense>
+                                    }/>
+                                    <Route path="/register" element={
+                                        <Suspense fallback={<SuspenseFallbackPage />}>
+                                            <RegisterPage/>
+                                        </Suspense>
+                                    }/>
                                     <Route path="/dashboard" element={
-                                        <PrivateRoute showAccessDenied={showAccessDenied} role={USER_ROLE}>
-                                            <UserDashboardPage/>
-                                        </PrivateRoute>
+                                        <Suspense fallback={<SuspenseFallbackPage />}>
+                                            <PrivateRoute showAccessDenied={showAccessDenied} role={USER_ROLE}>
+                                                <UserDashboardPage/>
+                                            </PrivateRoute>
+                                        </Suspense>
                                     }/>
                                     <Route path="/admin-dashboard" element={
-                                        <PrivateRoute showAccessDenied={showAccessDenied} role={ADMIN_ROLE}>
-                                            <AdminDashboardPage/>
-                                        </PrivateRoute>
+                                        <Suspense fallback={<SuspenseFallbackPage />}>
+                                            <PrivateRoute showAccessDenied={showAccessDenied} role={ADMIN_ROLE}>
+                                                <AdminDashboardPage/>
+                                            </PrivateRoute>
+                                        </Suspense>
                                     }/>
-                                    <Route path="/tour/:id" element={<TourPage/>}/>
-                                    <Route path="*" element={<UnknownRoutePage/>}/>
+                                    <Route path="/tour/:id" element={
+                                        <Suspense fallback={<SuspenseFallbackPage />}>
+                                            <TourPage/>
+                                        </Suspense>
+                                    }/>
+                                    <Route path="*" element={
+                                        <Suspense fallback={<SuspenseFallbackPage />}>
+                                            <UnknownRoutePage/>
+                                        </Suspense>
+                                    }/>
                                 </Routes>
                             </main>
                         </div>

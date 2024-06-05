@@ -1,0 +1,13 @@
+@import "../../vars.css";
+
+.main{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner{ 
+    width: 17rem !important;
+    height: 17rem !important;
+}

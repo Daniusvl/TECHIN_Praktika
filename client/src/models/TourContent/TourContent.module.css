@@ -20,8 +20,8 @@
 }
 
 .spinner{
-    width: 17rem;
-    height: 17rem;
+    width: 17rem !important;
+    height: 17rem !important;
 }
 
 .grid_container{

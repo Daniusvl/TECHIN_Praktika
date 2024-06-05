@@ -1,7 +1,9 @@
 import React from "react";
 
-export const TourPage = () => {
+const TourPage = () => {
     return (
         <div>TourPage</div>
     );
 };
+
+export default TourPage;

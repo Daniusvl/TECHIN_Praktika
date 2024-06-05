@@ -1,7 +1,9 @@
 import React from "react";
 
-export const UserDashboardPage = () => {
+const UserDashboardPage = () => {
     return (
         <div>UserDashboardPage</div>
     );
 };
+
+export default UserDashboardPage;

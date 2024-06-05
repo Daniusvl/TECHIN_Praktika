@@ -4,7 +4,7 @@ import styles from "./RegisterPage.module.css";
 import { useAuth } from "../../shared/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
-export const RegisterPage = () => {
+const RegisterPage = () => {
 
     const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
@@ -24,3 +24,5 @@ export const RegisterPage = () => {
         </div>
     );
 };
+
+export default RegisterPage;

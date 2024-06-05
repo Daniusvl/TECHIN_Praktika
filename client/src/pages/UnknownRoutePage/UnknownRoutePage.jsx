@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./UnknownRoutePage.module.css";
 
-export const UnknownRoutePage = () => {
+const UnknownRoutePage = () => {
     return (
         <div className={styles.main}>
             <div className={styles.textContainer}>
@@ -13,3 +13,5 @@ export const UnknownRoutePage = () => {
         </div>
     );
 };
+
+export default UnknownRoutePage;

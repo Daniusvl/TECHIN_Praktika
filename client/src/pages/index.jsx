@@ -1,11 +1,15 @@
-import { AdminDashboardPage } from "./AdminDashboardPage/AdminDashboardPage";
-import { HomePage } from "./HomePage/HomePage";
-import { LoginPage } from "./LoginPage/LoginPage";
-import { RegisterPage } from "./RegisterPage/RegisterPage";
-import { TourPage } from "./TourPage/TourPage";
-import { UnknownRoutePage } from "./UnknownRoutePage/UnknownRoutePage";
-import { UserDashboardPage } from "./UserDashboardPage/UserDashboardPage";
+import { lazy } from "react";
+
+import { SuspenseFallbackPage } from "./SuspenseFallbackPage/SuspenseFallbackPage";
 import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+
+const AdminDashboardPage = lazy(() => import("./AdminDashboardPage/AdminDashboardPage"));
+const HomePage = lazy(() => import("./HomePage/HomePage"));
+const LoginPage = lazy(() => import("./LoginPage/LoginPage"));
+const RegisterPage = lazy(() => import("./RegisterPage/RegisterPage"));
+const TourPage = lazy(() => import("./TourPage/TourPage"));
+const UnknownRoutePage = lazy (() => import("./UnknownRoutePage/UnknownRoutePage"));
+const UserDashboardPage = lazy(() => import("./UserDashboardPage/UserDashboardPage"));
 
 export {
     AdminDashboardPage,
@@ -15,5 +19,6 @@ export {
     TourPage,
     UnknownRoutePage,
     UserDashboardPage,
-    ErrorBoundary
+    ErrorBoundary,
+    SuspenseFallbackPage
 };
