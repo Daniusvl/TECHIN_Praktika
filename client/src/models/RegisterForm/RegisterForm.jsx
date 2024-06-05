@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
-import { FormGroup } from "../../components/index";
+import { FormGroup, ServerSideErrorAlert } from "../../components/index";
 import styles from "./RegisterForm.module.css";
-import { ButtonControl, DisplayServerSideErrorAlert } from "../../ui/index";
+import { ButtonControl } from "../../ui/index";
 import { useRegistration } from "./hooks/useRegistration";
 import { useNavigate } from "react-router-dom";
 import { classNames } from "../../shared/classNames.mjs";
@@ -54,7 +54,7 @@ export const RegisterForm = () => {
     return (
         <Form className={styles.form} onSubmit={handleSubmit(onFormSubmit)}>
 
-            {serverSideError && DisplayServerSideErrorAlert()}
+            {serverSideError && ServerSideErrorAlert()}
 
             <div className={classNames("mb-3", styles.form_header)}>Registration</div>
 

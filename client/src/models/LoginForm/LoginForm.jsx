@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
-import { FormGroup } from "../../components/index";
+import { FormGroup, ServerSideErrorAlert } from "../../components/index";
 import styles from "./LoginForm.module.css";
-import { ButtonControl, DisplayServerSideErrorAlert } from "../../ui/index";
+import { ButtonControl } from "../../ui/index";
 import { useLogin } from "./hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../shared/hooks/useAuth";
@@ -56,7 +56,7 @@ export const LoginForm = () => {
 
     return (
         <div className={styles.form_container}>
-            {serverSideError && DisplayServerSideErrorAlert()}
+            {serverSideError && ServerSideErrorAlert()}
 
             <Form className={styles.form} onSubmit={handleSubmit(onFormSubmit)}>
 

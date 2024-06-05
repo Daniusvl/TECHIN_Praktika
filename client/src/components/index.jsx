@@ -1,6 +1,5 @@
 import { FormGroup } from "./FormGroup/FormGroup";
 import { SuccessfulRegistration } from "./SuccessfulRegistration/SuccessfulRegistration";
-import { SearchInput } from "./SearchInput/SearchInput";
 import { SortBy } from "./SortBy/SortBy";
 import { SortOrder } from "./SortOrder/SortOrder";
 import { PriceFilter } from "./PriceFilter/PriceFilter";
@@ -9,11 +8,11 @@ import { ScoreFilter } from "./ScoreFilter/ScoreFilter";
 import { TypeFilter } from "./TypeFilter/TypeFilter";
 import { TourItem } from "./TourItem/TourItem";
 import { TourPagination } from "./TourPagination/TourPagination";
+import { ServerSideErrorAlert } from "./ServerSideErrorAlert/ServerSideErrorAlert";
 
 export {
     FormGroup,
     SuccessfulRegistration,
-    SearchInput,
     SortBy,
     SortOrder,
     PriceFilter,
@@ -21,5 +20,6 @@ export {
     ScoreFilter,
     TypeFilter,
     TourItem,
-    TourPagination
+    TourPagination,
+    ServerSideErrorAlert
 };

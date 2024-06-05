@@ -1,7 +1,11 @@
 @import "../../vars.css";
 
-.main{
+
+.itemPadding{
     padding: 0 7vw;
+}
+
+.main{
     display: flex;
 }
 
@@ -18,7 +22,7 @@
 }
 
 @media screen and (max-width: 1150px){
-    .main{
+    .itemPadding{
         padding: 0 1em;
     }
 }

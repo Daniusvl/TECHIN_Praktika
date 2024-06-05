@@ -5,6 +5,7 @@ import Stack from "react-bootstrap/Stack";
 
 import styles from "./HomePage.module.css";
 import { tourBaseModel } from "../../shared/api/tourBaseModel";
+import { classNames } from "../../shared/classNames.mjs";
 
 export const HomePage = () => {
 
@@ -73,10 +74,10 @@ export const HomePage = () => {
 
     return (
         <Stack gap={3}>
-            <div className="p-2">
+            <div className={styles.itemPadding}>
                 <SearchBox searchChanged={searchSave} />
             </div>
-            <div className={styles.main}>
+            <div className={classNames(styles.main, styles.itemPadding)}>
                 <div className={styles.filters}>
                     <TourFilters saveLoading={filtersLoading} saveOnClick={filtersSave} maxPriceValue={maxPriceValue} maxDurationValue={maxDurationValue} />
                 </div>
