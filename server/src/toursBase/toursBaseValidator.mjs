@@ -87,7 +87,6 @@ export const getToursBaseValidator = checkSchema({
         ...isNumber("minPrice"),
         custom: {
             options: (value, {req}) => {
-                console.log("typeof value", typeof value);
                 if(value > req.query.maxPrice){
                     throw new Error("minPrice cannot be greater than maxPrice");
                 }

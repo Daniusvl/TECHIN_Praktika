@@ -1,0 +1,35 @@
+@import "../../vars.css";
+
+.main{
+    padding: 0 7vw;
+    display: flex;
+}
+
+.filters{
+    width: 25vw;
+    margin-right: 2vw;
+    background-color: var(--secondary-bg-color);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.content{
+    width: 100%;
+}
+
+@media screen and (max-width: 1150px){
+    .main{
+        padding: 0 1em;
+    }
+}
+
+@media screen and (max-width: 1060px){
+    .main{
+        flex-direction: column;
+    }
+    .filters{
+        width: 100%;
+        margin-bottom: 1em;
+        margin-right: 0;
+    }
+}

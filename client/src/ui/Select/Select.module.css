@@ -1,0 +1,5 @@
+@import "../../vars.css";
+
+.select{
+    background-color: var(--main-bg-color) !important;
+}

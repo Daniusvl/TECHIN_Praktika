@@ -1,0 +1,14 @@
+@import "../../vars.css";
+
+.main{
+    background-color: var(--secondary-bg-color);
+    border-radius: 1rem;
+    padding: 1rem;
+    min-height: 60vh;
+}
+
+.grid_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 20rem);
+    justify-content: center;
+}

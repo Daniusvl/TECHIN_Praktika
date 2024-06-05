@@ -1,0 +1,12 @@
+@import "../../vars.css";
+
+.main{
+    margin: 1rem;
+    padding: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.bg_color{
+    background-color: var(--main-bg-color) !important;
+}

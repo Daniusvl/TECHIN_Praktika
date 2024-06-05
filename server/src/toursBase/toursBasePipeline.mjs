@@ -13,7 +13,7 @@ const getPriceMatch = (minPrice, maxPrice, priceFree) => {
         };
     }
 
-    if(!minPrice || !maxPrice){
+    if(minPrice !== 0 && !minPrice || !maxPrice){
         minPrice = defaultMinPrice;
         maxPrice = defaultMaxPrice;
     }
@@ -39,7 +39,10 @@ const getPriceMatch = (minPrice, maxPrice, priceFree) => {
 
 const getSingleMatch = (singleOnly, multipleOnly) => {
 
-    if(!singleOnly && !multipleOnly){
+    if(
+        !singleOnly && !multipleOnly ||
+        singleOnly && multipleOnly
+    ){
         return {
             $match:{}
         };
@@ -180,7 +183,7 @@ export const getPipeline = (args, page) => {
             $addFields: {
                 avgScore: {
                     $avg: "$tourInstances.avgScore"
-                }
+                },
             }
         },
         getAvgScoreMatch(minScore, maxScore),
@@ -196,14 +199,16 @@ export const getPipeline = (args, page) => {
                     }
                 ],
                 totalCount: [
-                    { $count: "count" }
-                ]
+                    { 
+                        $count: "count" 
+                    }
+                ],
             }
         },
         {
             $project: {
                 data: 1,
-                pageCount: { $arrayElemAt: ["$totalCount.count", 0] }
+                pageCount: { $arrayElemAt: ["$totalCount.count", 0] },
             }
         }
     ];

@@ -16,8 +16,23 @@ export const TOUR_NOT_FOUND = responseMessage("Tour with specified id not found"
 export const toursBaseService = {
     getToursBase: async (args, page) => {
         const pipelineResult = await toursBaseModel.aggregate(getPipeline(args, page));
+        const maxPriceAndMaxDuraiton = await toursBaseModel.aggregate([
+            {
+                $group : { 
+                    _id: null, 
+                    maxPrice: { 
+                        $max : "$price" 
+                    },
+                    maxDuration:{
+                        $max : "$durationInHours"
+                    }
+                }
+            }
+        ]);
 
         const data = pipelineResult[0];
+        data.maxPrice = maxPriceAndMaxDuraiton[0].maxPrice;
+        data.maxDuration = maxPriceAndMaxDuraiton[0].maxDuration;
         data.pageCount = Math.ceil(data.pageCount / mainTourPageItemCount);
 
         return serviceResponse(200, data);

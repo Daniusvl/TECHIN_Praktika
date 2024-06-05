@@ -1,0 +1,94 @@
+@import "../../vars.css";
+
+.main{
+    position: relative;
+    margin-top: 10px;
+    height: 40px;
+    min-width: 200px;
+}
+
+.input{
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    height: 22px;
+    top: -10px;
+    -webkit-appearance: none;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.input::-webkit-slider-thumb{
+    pointer-events: all;
+	width: 25px;
+	height: 25px;
+	border-radius: 0;
+	border: 0 none;
+	background-color: red;
+	-webkit-appearance: none;
+}
+
+.input::-moz-range-thumb{
+    pointer-events: all;
+	width: 25px;
+	height: 25px;
+	border-radius: 0;
+	border: 0 none;
+	background-color: red;
+	-webkit-appearance: none;
+}
+
+.slider{
+    background-color: gray;
+    border-radius: 10px;
+    height: 5px;
+    z-index: 2;
+    position: relative;
+    margin: 0 10px
+}
+
+.range{
+    z-index: 3;
+    height: 5px;
+    background-color: var(--main-bg-color);
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.thumb{
+    position: absolute;
+    top: 2.5px;
+    transform: translateY(-50%);
+    background-color: var(--main-bg-color);
+    z-index: 4;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px gray;
+}
+
+.leftThumb{
+    left:0;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+}
+
+.rightThumb{
+    right: 0;
+    transform: translate(+50%, -50%);
+}
+
+.minValue{
+    position: absolute;
+    top: 18px;
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.maxValue{
+    position: absolute;
+    top: 18px;
+    left: 100%;
+    transform: translateX(-50%);
+}

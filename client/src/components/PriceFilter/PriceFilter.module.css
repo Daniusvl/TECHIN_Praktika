@@ -1,0 +1,9 @@
+.freeOnly{
+    display: flex;
+    align-items: center;
+}
+
+.checkboxFreeOnly{
+    margin-right: 3px;
+}
+

@@ -1,0 +1,8 @@
+.byScore{
+    display: flex;
+    align-items: center;
+}
+
+.checkboxByScore{
+    margin-right: 3px;
+}
