@@ -68,7 +68,7 @@ export const removeArgs = (...newArgs) => {
 export const tourBaseModel = {
     getTourBases: async (page) => {
         try {
-            const response = await apiClient.get(`/toursBase/${page}`, { params: generateQueryParams(args)});
+            const response = await apiClient.get(`/toursBase/all/${page}`, { params: generateQueryParams(args)});
             return modelResponse(response.status, response.data);
         } catch (error) {
             return modelResponse(error.response.status, error.response.data);

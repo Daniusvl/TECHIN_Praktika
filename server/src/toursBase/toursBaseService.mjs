@@ -5,7 +5,7 @@ import { updateFile, writeFile, deleteFile } from "../shared/imageHandler.mjs";
 import { SUCCESS } from "../shared/commonResponseMessages.mjs";
 import { toursInstanceService } from "../toursInstance/index.mjs";
 import { mainTourPageItemCount } from "../shared/config/tourCandidates.mjs";
-import { getPipeline } from "./toursBasePipeline.mjs";
+import { getSearchPipeline, getByIdPipeline } from "./toursBasePipeline.mjs";
 
 const NAME_ALREADY_TAKEN = responseMessage("Name already taken");
 
@@ -15,7 +15,7 @@ export const TOUR_NOT_FOUND = responseMessage("Tour with specified id not found"
 
 export const toursBaseService = {
     getToursBase: async (args, page) => {
-        const pipelineResult = await toursBaseModel.aggregate(getPipeline(args, page));
+        const pipelineResult = await toursBaseModel.aggregate(getSearchPipeline(args, page));
         const maxPriceAndMaxDuraiton = await toursBaseModel.aggregate([
             {
                 $group : { 
@@ -129,7 +129,12 @@ export const toursBaseService = {
     },
 
     getTourBaseById: async (id) => {
-        const tourBase = await toursBaseModel.findById(id);
+        console.log("id", id);
+        const pipeline = await toursBaseModel.aggregate(getByIdPipeline(id));
+
+        console.log("pipeline", pipeline);
+
+        const tourBase = pipeline[0];
 
         if(!tourBase){
             return serviceResponse(404, TOUR_NOT_FOUND);

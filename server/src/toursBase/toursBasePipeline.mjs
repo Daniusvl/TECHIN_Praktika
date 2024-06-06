@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { mainTourPageItemCount } from "../shared/config/tourCandidates.mjs";
 import { 
     minPrice as defaultMinPrice, maxPrice as defaultMaxPrice,
@@ -139,7 +140,7 @@ const getSortingPipe = (sortBy, desc) => {
     };
 };
 
-export const getPipeline = (args, page) => {
+export const getSearchPipeline = (args, page) => {
     const {
         minPrice, maxPrice, priceFree,
         singleOnly, multipleOnly,
@@ -211,5 +212,63 @@ export const getPipeline = (args, page) => {
                 pageCount: { $arrayElemAt: ["$totalCount.count", 0] },
             }
         }
+    ];
+};
+
+
+export const getByIdPipeline = (id) => {
+    return [
+        {
+            $match:{
+                "_id": new Types.ObjectId(id)
+            }
+        },
+        { 
+            $lookup: {
+                from: "ToursInstance",
+                localField: "_id",
+                foreignField: "tourBase",
+                as: "tourInstances",
+                pipeline: [
+                    { 
+                        $lookup: {
+                            from: "TourCandidates",
+                            localField: "_id",
+                            foreignField: "tourInstance",
+                            as: "tourCandidates",
+                            pipeline: [
+                                {
+                                    $lookup: {
+                                        from: "Users",
+                                        localField: "user",
+                                        foreignField: "_id",
+                                        as: "user",
+                                        pipeline: [
+                                            {                                            
+                                                $project:{
+                                                    _id: 1,
+                                                    email: 1
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    $unwind: "$user"
+                                },
+                                {
+                                    $project:{
+                                        _id: 1,
+                                        score: 1,
+                                        review: 1,
+                                        user: 1
+                                    }
+                                },
+                            ]
+                        }
+                    },
+                ]
+            },
+        },
     ];
 };

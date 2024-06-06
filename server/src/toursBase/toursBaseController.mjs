@@ -9,7 +9,14 @@ export const toursBaseController = {
             next(error);
         }
     },
-
+    getTourBaseById: async (req, res, next) => {
+        try {
+            const {statusCode, data} = await toursBaseService.getTourBaseById(req.params.id);
+            return res.status(statusCode).json(data);
+        } catch (error) {
+            next(error);
+        }
+    },
     createTourBase: async (req, res, next) => {
         try {
             const {statusCode, data} = await toursBaseService.createTourBase(req.body, req.files);
