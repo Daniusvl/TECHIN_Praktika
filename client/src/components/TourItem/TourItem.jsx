@@ -22,7 +22,7 @@ export const TourItem = ({ tour }) => {
                     Score: {
                         tour.avgScore ? 
                             <>{tour.avgScore}/10</> : 
-                            <>no scores</>
+                            <>no reviews</>
                     }
                 </ListGroup.Item>
 

@@ -23,7 +23,15 @@ export const TourPageItem = ({tour}) => {
                             {tour.name}
                         </div>
                         <div>
-                            <span className={styles.bold}>{tour.avgScore}/10</span> <a href="#comments">See reviews</a>
+                            <span className={styles.bold}>
+                                {
+                                    tour.avgScore ? <>{tour.avgScore}/10</> : <>No reviews </>
+                                }
+                            </span>
+                            {
+                                tour.avgScore &&
+                                <a href="#comments">See reviews</a>
+                            } 
                         </div>
                         <div>
                             approximately <span className={styles.bold}>{tour.durationInHours}</span> hours long
@@ -43,7 +51,7 @@ export const TourPageItem = ({tour}) => {
                             Price: 
                             <span className={styles.bold}>
                                 {
-                                    tour.price === 0 ? <> Free</> : <>{tour.price} $</>
+                                    tour.price === 0 ? <> Free</> : <> {tour.price/100} $</>
                                 }
                             </span>
                         </div>

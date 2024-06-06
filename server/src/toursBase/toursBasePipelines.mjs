@@ -190,6 +190,9 @@ export const getSearchPipeline = (args, page) => {
         getAvgScoreMatch(minScore, maxScore),
         getSortingPipe(sortBy, desc),
         {
+            $unset: "tourInstances"
+        },
+        {
             $facet: {
                 data: [
                     {
