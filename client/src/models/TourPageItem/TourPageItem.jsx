@@ -14,10 +14,10 @@ export const TourPageItem = ({tour}) => {
                         <img className={styles.img} src={`${BASE_URL}/${tour.imgPath}`} alt="tour" />
                     </div>
                 </div>
-                <div>
+                <div className={styles.tourData}>
                     <div className={styles.data}>
                         <div className={styles.name}>
-                            {tour.name}
+                            <span className={styles.nameSpan}>{tour.name}</span>
                         </div>
                         <div>
                             <span className={styles.bold}>

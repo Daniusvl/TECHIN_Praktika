@@ -29,20 +29,33 @@
     padding: 1rem;
     border: 1px solid gray;
     border-radius: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .data{
     margin: 1rem 0;
     padding: 1rem;
     text-align: center;
-    /* background-color: var(--main-bg-color); */
     border: 1px solid gray;
     border-radius: 2rem;
+    background-color: var(--secondary-bg-color);
 }
 
 .name{
-    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+.nameSpan{
     font-size: var(--header-font-size);
+    word-break: break-word;
+      white-space: pre-line;
+      overflow-wrap: break-word;
+      -ms-word-break: break-word;
+      word-break: break-word;
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
 }
 
 .bold{
@@ -58,6 +71,7 @@
     padding: 1rem;
     border-radius: 2rem;
     background-color: var(--main-bg-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .tourRegistrationBox{
@@ -66,6 +80,20 @@
     text-align: center;
     border: 1px solid gray;
     border-radius: 2rem;
+    background-color: var(--secondary-bg-color);
+}
+
+.tourData{
+    background-color: var(--main-bg-color);
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 @media screen and (max-width: 980px){
@@ -75,6 +103,5 @@
     }
     .description{
         margin: 0;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     }
 }
