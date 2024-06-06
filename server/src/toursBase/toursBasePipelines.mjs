@@ -230,13 +230,6 @@ export const getByIdPipeline = (id) => {
                 foreignField: "tourBase",
                 as: "tourInstances",
                 pipeline: [
-                    {
-                        $match: {
-                            startDate: {
-                                $gt: new Date()
-                            }
-                        }
-                    },
                     { 
                         $lookup: {
                             from: "TourCandidates",
@@ -274,8 +267,22 @@ export const getByIdPipeline = (id) => {
                             ]
                         }
                     },
+                    {
+                        $addFields: {
+                            avgScore: {
+                                $avg: "$tourCandidates.score"
+                            }
+                        }
+                    },
                 ]
             },
+        },
+        {
+            $addFields: {
+                avgScore: {
+                    $avg: "$tourInstances.avgScore"
+                },
+            }
         },
     ];
 };

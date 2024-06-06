@@ -1,0 +1,17 @@
+@import "../../vars.css";
+
+.main{
+    background-color: var(--main-bg-color);
+    border-radius: 2rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.header{
+    font-weight: bold;
+}
+
+.review{
+    font-style:italic;
+}

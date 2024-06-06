@@ -8,6 +8,8 @@ import { SearchBox } from "./SearchBox/SearchBox";
 import { TourFilters } from "./TourFilters/TourFilters";
 import { TourContent } from "./TourContent/TourContent";
 import { TourContentHeader } from "./TourContentHeader/TourContentHeader";
+import { TourPageItem } from "./TourPageItem/TourPageItem";
+import { TourPageReviews } from "./TourPageReviews/TourPageReviews";
 
 export {
     Footer, 
@@ -19,5 +21,7 @@ export {
     SearchBox,
     TourFilters,
     TourContent,
-    TourContentHeader
+    TourContentHeader,
+    TourPageItem,
+    TourPageReviews
 };

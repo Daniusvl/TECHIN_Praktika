@@ -1,0 +1,40 @@
+@import "../../vars.css";
+
+.main{
+    margin: 1rem 7rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: var(--secondary-bg-color);
+    min-height: 70vh;
+}
+
+.spinnerContainer{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner{ 
+    width: 17rem !important;
+    height: 17rem !important;
+}
+
+.notFoundContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    height: 70vh;
+}
+
+.text{
+    font-size: var(--header-font-size);
+    color: var(--header-text-color);
+}
+
+@media screen and (max-width: 980px){
+    .main{
+        margin: 1rem;
+    }
+}

@@ -73,5 +73,13 @@ export const tourBaseModel = {
         } catch (error) {
             return modelResponse(error.response.status, error.response.data);
         }
+    },
+    getTourBaseById: async (id) => {
+        try {
+            const response = await apiClient.get(`/toursBase/${id}`);
+            return modelResponse(response.status, response.data);
+        } catch (error) {
+            return modelResponse(error.response.status, error.response.data);
+        }
     }
 };

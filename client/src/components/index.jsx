@@ -9,6 +9,9 @@ import { TypeFilter } from "./TypeFilter/TypeFilter";
 import { TourItem } from "./TourItem/TourItem";
 import { TourPagination } from "./TourPagination/TourPagination";
 import { ServerSideErrorAlert } from "./ServerSideErrorAlert/ServerSideErrorAlert";
+import { TourRegistrationForm } from "./TourRegistrationForm/TourRegistrationForm";
+import { SuccessAlert } from "./SuccessAlert/SuccessAlert";
+import { Review } from "./Review/Review";
 
 export {
     FormGroup,
@@ -21,5 +24,8 @@ export {
     TypeFilter,
     TourItem,
     TourPagination,
-    ServerSideErrorAlert
+    ServerSideErrorAlert,
+    TourRegistrationForm,
+    SuccessAlert,
+    Review
 };

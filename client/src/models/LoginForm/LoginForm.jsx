@@ -5,7 +5,7 @@ import { FormGroup, ServerSideErrorAlert } from "../../components/index";
 import styles from "./LoginForm.module.css";
 import { ButtonControl } from "../../ui/index";
 import { useLogin } from "./hooks/useLogin";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../shared/hooks/useAuth";
 import { classNames } from "../../shared/classNames.mjs";
 import { emailValidation, passwordValidation } from "../../shared/commonValidation.mjs";
@@ -21,6 +21,7 @@ export const LoginForm = () => {
     } = useForm();
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { authenticate } = useAuth();
 
@@ -46,13 +47,18 @@ export const LoginForm = () => {
             }
             else{
                 authenticate(data.token);
-                navigate("/");
+                if(location.state && location.state.redirect){
+                    navigate(location.state.redirect);
+                }
+                else{
+                    navigate("/");
+                }
             }
         } catch (error) {
             setServerSideError(true);
         }
         setIsLoading(false);
-    }, [login, setError, navigate, setServerSideError, authenticate]);
+    }, [login, setError, navigate, setServerSideError, authenticate, location.state]);
 
     return (
         <div className={styles.form_container}>

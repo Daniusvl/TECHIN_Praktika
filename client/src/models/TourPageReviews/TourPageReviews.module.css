@@ -1,0 +1,11 @@
+@import "../../vars.css";
+
+.main{
+    padding: 1rem;
+}
+
+.header{
+    font-size: var(--header-font-size);
+    color: var(--header-text-color);
+    margin: 1rem 0;
+}

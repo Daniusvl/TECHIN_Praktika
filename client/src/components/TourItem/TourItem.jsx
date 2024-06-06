@@ -13,7 +13,7 @@ export const TourItem = ({ tour }) => {
         <CardItem className={classNames(styles.main, styles.bg_color)}
             description={tour.description}
             img={`${BASE_URL}${tour.imgPath}`}
-            to="#"
+            to={`/tour/${tour._id}`}
             title={tour.name}
         >
             <ListGroup className={"list-group-flush"}>

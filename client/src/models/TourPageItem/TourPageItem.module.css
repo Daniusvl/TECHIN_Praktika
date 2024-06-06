@@ -1,0 +1,73 @@
+@import "../../vars.css";
+
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.mainData{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.img{    
+    width: 100%;
+    border-radius: 2rem;
+    border: 1px solid gray;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imgContainer{
+    flex: 0 0 700px;
+    padding: 1rem;
+}
+
+.imgBox{
+    background-color: var(--main-bg-color);
+    padding: 1rem;
+    border: 1px solid gray;
+    border-radius: 2rem;
+}
+
+.data{
+    margin: 1rem 0;
+    padding: 1rem;
+    text-align: center;
+    /* background-color: var(--main-bg-color); */
+    border: 1px solid gray;
+    border-radius: 2rem;
+}
+
+.name{
+    padding: 1rem 0;
+    font-size: var(--header-font-size);
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.itallic{
+    font-style: italic;
+}
+
+.description{
+    padding: 1rem;
+}
+
+.tourRegistrationBox{
+    margin: 1rem 0;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 2rem;
+}
+
+@media screen and (max-width: 980px){
+    .imgContainer{
+        flex: 1 0 auto;
+        width: 100%;
+    }
+}
