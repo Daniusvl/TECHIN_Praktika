@@ -22,7 +22,7 @@ export const TourPageItem = ({tour}) => {
                         <div>
                             <span className={styles.bold}>
                                 {
-                                    tour.avgScore ? <>{tour.avgScore}/10</> : <>No reviews </>
+                                    tour.avgScore ? <>{tour.avgScore}/10 </> : <>No reviews </>
                                 }
                             </span>
                             {
