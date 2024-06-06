@@ -45,7 +45,7 @@ const TourPage = () => {
                 })
             };
         });
-        console.log("maped", maped);
+
         const result = [];
         for (let i = 0; i < maped.length; i++) {
             for (let j = 0; j < maped[i].reviews.length; j++) {
@@ -59,7 +59,7 @@ const TourPage = () => {
                 });
             }
         }
-        console.log("result", result);
+
         return result;
 
     }, []);

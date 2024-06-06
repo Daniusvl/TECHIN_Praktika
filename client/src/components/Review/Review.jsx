@@ -5,8 +5,6 @@ import { dateToString } from "../../shared/dateConverter";
 
 export const Review = ({review}) => {
 
-    console.log("review", review);
-
     return (
         <div className={styles.main}>
             <div className={styles.header}>

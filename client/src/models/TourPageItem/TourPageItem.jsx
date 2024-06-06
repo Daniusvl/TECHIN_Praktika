@@ -5,9 +5,6 @@ import { BASE_URL } from "../../shared/api/base.mjs";
 import { TourRegistrationForm } from "../../components";
 
 export const TourPageItem = ({tour}) => {
-    //  a!!!!!!!!!!!!!!!!
-    console.log("tour", tour);
-    //  a!!!!!!!!!!!!!!!!
 
     return (
         <div className={styles.main}>
