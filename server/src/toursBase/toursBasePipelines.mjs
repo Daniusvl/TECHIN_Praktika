@@ -230,6 +230,13 @@ export const getByIdPipeline = (id) => {
                 foreignField: "tourBase",
                 as: "tourInstances",
                 pipeline: [
+                    {
+                        $match: {
+                            startDate: {
+                                $gt: new Date()
+                            }
+                        }
+                    },
                     { 
                         $lookup: {
                             from: "TourCandidates",

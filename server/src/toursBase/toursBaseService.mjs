@@ -5,7 +5,7 @@ import { updateFile, writeFile, deleteFile } from "../shared/imageHandler.mjs";
 import { SUCCESS } from "../shared/commonResponseMessages.mjs";
 import { toursInstanceService } from "../toursInstance/index.mjs";
 import { mainTourPageItemCount } from "../shared/config/tourCandidates.mjs";
-import { getSearchPipeline, getByIdPipeline } from "./toursBasePipeline.mjs";
+import { getSearchPipeline, getByIdPipeline } from "./toursBasePipelines.mjs";
 
 const NAME_ALREADY_TAKEN = responseMessage("Name already taken");
 
