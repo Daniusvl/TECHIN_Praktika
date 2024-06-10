@@ -7,7 +7,7 @@ import { DurationFilter } from "./DurationFilter/DurationFilter";
 import { ScoreFilter } from "./ScoreFilter/ScoreFilter";
 import { TypeFilter } from "./TypeFilter/TypeFilter";
 import { TourItem } from "./TourItem/TourItem";
-import { TourPagination } from "./TourPagination/TourPagination";
+import { Pagination } from "./Pagination/Pagination";
 import { ServerSideErrorAlert } from "./ServerSideErrorAlert/ServerSideErrorAlert";
 import { TourRegistrationForm } from "./TourRegistrationForm/TourRegistrationForm";
 import { SuccessAlert } from "./SuccessAlert/SuccessAlert";
@@ -23,7 +23,7 @@ export {
     ScoreFilter,
     TypeFilter,
     TourItem,
-    TourPagination,
+    Pagination,
     ServerSideErrorAlert,
     TourRegistrationForm,
     SuccessAlert,
