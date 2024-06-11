@@ -1,0 +1,6 @@
+.actionContainer{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    flex-wrap: wrap;
+}

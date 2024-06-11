@@ -14,6 +14,8 @@ import { DashboardNavigation } from "./DashboardNavigation/DashboardNavigation";
 import { DashboardPagination } from "./DashboardPagination/DashboardPagination";
 import { AdminActiveRequests } from "./AdminActiveRequests/AdminActiveRequests";
 import { AdminHistoryRequests } from "./AdminHistoryRequests/AdminHistoryRequests";
+import { UserActiveRequests } from "./UserActiveRequests/UserActiveRequests";
+import { UserHistoryRequests } from "./UserHistoryRequests/UserHistoryRequests";
 
 export {
     Footer, 
@@ -31,5 +33,7 @@ export {
     DashboardNavigation,
     DashboardPagination,
     AdminActiveRequests,
-    AdminHistoryRequests
+    AdminHistoryRequests,
+    UserActiveRequests,
+    UserHistoryRequests
 };

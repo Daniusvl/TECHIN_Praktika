@@ -15,6 +15,8 @@ import { Review } from "./Review/Review";
 import { AdminActiveRequest } from "./AdminActiveRequest/AdminActiveRequest";
 import { ErrorAlert } from "./ErrorAlert/ErrorAlert";
 import { AdminHistoryRequest } from "./AdminHistoryRequest/AdminHistoryRequest";
+import { UserActiveRequest } from "./UserActiveRequest/UserActiveRequest";
+import { UserHistoryRequest } from "./UserHistoryRequest/UserHistoryRequest";
 
 export {
     FormGroup,
@@ -33,5 +35,7 @@ export {
     Review,
     AdminActiveRequest,
     ErrorAlert,
-    AdminHistoryRequest
+    AdminHistoryRequest,
+    UserActiveRequest,
+    UserHistoryRequest
 };

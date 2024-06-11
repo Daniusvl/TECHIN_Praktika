@@ -1,0 +1,14 @@
+@import "../../vars.css";
+
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.input{
+    position: relative;
+    top: 3px;
+    margin-right: 1em;
+}
+

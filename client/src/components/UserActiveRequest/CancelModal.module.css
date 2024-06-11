@@ -1,0 +1,8 @@
+@import "../../vars.css";
+
+.bg{
+    background-color: var(--secondary-bg-color) !important;
+}
+.txt{
+    margin-bottom: 1em;
+}

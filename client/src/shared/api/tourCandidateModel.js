@@ -40,5 +40,45 @@ export const tourCandidateModel ={
         } catch (error) {
             return modelResponse(error.response.status, error.response.data);
         }
-    }
+    },
+    showMyActiveRequests: async () => {
+        try {
+            const response = await apiClient.get("/tourCandidates/user/active/");
+            return modelResponse(response.status, response.data);
+        } catch (error) {
+            return modelResponse(error.response.status, error.response.data);
+        }
+    },
+    showMyHistoryRequests: async (page) => {
+        try {
+            const response = await apiClient.get(`/tourCandidates/user/history/${page}`);
+            return modelResponse(response.status, response.data);
+        } catch (error) {
+            return modelResponse(error.response.status, error.response.data);
+        }
+    },
+    leaveReview: async (body) => {
+        try {
+            const response = await apiClient.put("/tourCandidates/user/review", body);
+            return modelResponse(response.status, response.data);
+        } catch (error) {
+            return modelResponse(error.response.status, error.response.data);
+        }
+    },
+    cancelRequest: async (id) => {
+        try {
+            const response = await apiClient.delete(`/tourCandidates/user/${id}`);
+            return modelResponse(response.status, response.data);
+        } catch (error) {
+            return modelResponse(error.response.status, error.response.data);
+        }
+    },
+    changeDate: async (body) => {
+        try {
+            const response = await apiClient.put("/tourCandidates/user/changeDate", body);
+            return modelResponse(response.status, response.data);
+        } catch (error) {
+            return modelResponse(error.response.status, error.response.data);
+        }
+    },
 };

@@ -9,6 +9,7 @@ import { PaginationItem } from "./PaginationItem/PaginationItem";
 import { Spinner } from "./Spinner/Spinner";
 import { Table } from "./Table/Table";
 import { Modal } from "./Modal/Modal";
+import { Range } from "./Range/Range";
 
 export {
     ButtonControl,
@@ -21,5 +22,6 @@ export {
     PaginationItem,
     Spinner,
     Table,
-    Modal
+    Modal,
+    Range
 };
