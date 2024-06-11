@@ -72,8 +72,8 @@ const AdminDashboardPage = () => {
                     </div>
                 }
 
-                {navigation === 1 && !isLoading && <AdminActiveRequests list={activeList} triggerRefresh={setIsRefreshed} />}
-                {navigation === 2 && !isLoading && <AdminHistoryRequests list={historyList}/>}
+                {navigation === 1 && !isLoading && activeList.length > 0 && <AdminActiveRequests list={activeList} triggerRefresh={setIsRefreshed} />}
+                {navigation === 2 && !isLoading && historyList.length > 0 && <AdminHistoryRequests list={historyList}/>}
             </div>
         </div>
     );

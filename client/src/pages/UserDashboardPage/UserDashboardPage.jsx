@@ -72,8 +72,8 @@ const UserDashboardPage = () => {
                     </div>
                 }
 
-                {navigation === 1 && !isLoading && <UserActiveRequests list={activeList} triggerRefresh={setIsRefreshed} />}
-                {navigation === 2 && !isLoading && <UserHistoryRequests list={historyList} triggerRefresh={setIsRefreshed} />}
+                {navigation === 1 && !isLoading && activeList.length > 0 && <UserActiveRequests list={activeList} triggerRefresh={setIsRefreshed} />}
+                {navigation === 2 && !isLoading && historyList.length > 0 && <UserHistoryRequests list={historyList} triggerRefresh={setIsRefreshed} />}
             </div>
         </div>
     );
