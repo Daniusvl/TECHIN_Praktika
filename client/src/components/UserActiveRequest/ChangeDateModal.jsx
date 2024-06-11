@@ -19,6 +19,7 @@ export const ChangeDateModal = ({request, triggerRefresh, ...args}) => {
 
     const {
         register,
+        setError,
         handleSubmit,
         formState: {
             errors
@@ -36,7 +37,7 @@ export const ChangeDateModal = ({request, triggerRefresh, ...args}) => {
         (async () => {
             const {status, data} = await tourDates.getDates(request.tourInstance.tourBase._id);
             if(status === 200){
-                setDates(data);
+                setDates(data.filter(v => v._id !== request.tourInstance._id));
             }
         })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,6 +45,12 @@ export const ChangeDateModal = ({request, triggerRefresh, ...args}) => {
 
     const onSubmit = useCallback(async (formData) => {
         setIsLoading(true);
+
+        if(formData.date === "default"){
+            setError("date", { type: "manual", message: "You must select a date" });
+            setIsLoading(false);
+            return;
+        }
 
         const body = {
             tourCandidateId: request._id,
@@ -69,7 +76,7 @@ export const ChangeDateModal = ({request, triggerRefresh, ...args}) => {
 
 
         setIsLoading(false);
-    }, [location.pathname, navigate, triggerRefresh, request._id]);
+    }, [location.pathname, navigate, triggerRefresh, request._id, setError]);
 
     const getDates = useCallback((dates) => {
 
