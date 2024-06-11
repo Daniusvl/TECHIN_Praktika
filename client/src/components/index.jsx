@@ -12,6 +12,9 @@ import { ServerSideErrorAlert } from "./ServerSideErrorAlert/ServerSideErrorAler
 import { TourRegistrationForm } from "./TourRegistrationForm/TourRegistrationForm";
 import { SuccessAlert } from "./SuccessAlert/SuccessAlert";
 import { Review } from "./Review/Review";
+import { AdminActiveRequest } from "./AdminActiveRequest/AdminActiveRequest";
+import { ErrorAlert } from "./ErrorAlert/ErrorAlert";
+import { AdminHistoryRequest } from "./AdminHistoryRequest/AdminHistoryRequest";
 
 export {
     FormGroup,
@@ -27,5 +30,8 @@ export {
     ServerSideErrorAlert,
     TourRegistrationForm,
     SuccessAlert,
-    Review
+    Review,
+    AdminActiveRequest,
+    ErrorAlert,
+    AdminHistoryRequest
 };

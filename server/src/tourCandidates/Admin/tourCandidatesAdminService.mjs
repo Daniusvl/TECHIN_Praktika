@@ -54,6 +54,7 @@ export const tourCandidatesAdminService = {
         }
 
         tourCandidate.status = APPROVED;
+        tourCandidate.statusMessage = "";
         await tourCandidate.save();
 
         return serviceResponse(200, tourCandidate);

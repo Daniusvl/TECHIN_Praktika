@@ -1,0 +1,26 @@
+@import "../../vars.css";
+
+.main{
+    background-color: var(--secondary-bg-color);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 3px;
+}
+
+.link{
+    display: block;
+    width: 50%;
+    border-radius: 2rem;
+    color: var(--main-text-color);
+    text-decoration: none;
+}
+
+.link:hover{
+    background-color: var(--main-bg-color);
+}
+
+.active{
+    background-color: white;
+}

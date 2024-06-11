@@ -7,6 +7,8 @@ import { MultiRangeSlider } from "./MultiRangeSlider/MultiRangeSlider";
 import { CardItem } from "./CardItem/CardItem";
 import { PaginationItem } from "./PaginationItem/PaginationItem";
 import { Spinner } from "./Spinner/Spinner";
+import { Table } from "./Table/Table";
+import { Modal } from "./Modal/Modal";
 
 export {
     ButtonControl,
@@ -17,5 +19,7 @@ export {
     MultiRangeSlider,
     CardItem,
     PaginationItem,
-    Spinner
+    Spinner,
+    Table,
+    Modal
 };

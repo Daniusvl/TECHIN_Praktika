@@ -1,0 +1,20 @@
+@import "../../vars.css";
+
+.mainContent{
+    min-height: 60vh;
+    background-color: var(--secondary-bg-color);
+    border-radius: 2rem;
+    padding: 1rem;
+}
+
+.defaultContainer{
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner{
+    width: 17rem !important;
+    height: 17rem !important;
+}

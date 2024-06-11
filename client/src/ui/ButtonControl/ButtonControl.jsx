@@ -6,9 +6,9 @@ import styles from "./ButtonControl.module.css";
 
 import Spinner from "react-bootstrap/Spinner";
 
-export const ButtonControl = ({children, isLoading, onClick}) => {
+export const ButtonControl = ({children, isLoading, onClick, ...args}) => {
     return (
-        <button className={classNames("btn", styles.btn_colors)} onClick={onClick}>
+        <button className={classNames("btn", styles.btn_colors)} onClick={onClick} {...args}>
             {
                 isLoading &&
                 <Spinner

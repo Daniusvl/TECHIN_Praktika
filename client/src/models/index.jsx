@@ -10,6 +10,10 @@ import { TourContent } from "./TourContent/TourContent";
 import { TourContentHeader } from "./TourContentHeader/TourContentHeader";
 import { TourPageItem } from "./TourPageItem/TourPageItem";
 import { TourPageReviews } from "./TourPageReviews/TourPageReviews";
+import { DashboardNavigation } from "./DashboardNavigation/DashboardNavigation";
+import { DashboardPagination } from "./DashboardPagination/DashboardPagination";
+import { AdminActiveRequests } from "./AdminActiveRequests/AdminActiveRequests";
+import { AdminHistoryRequests } from "./AdminHistoryRequests/AdminHistoryRequests";
 
 export {
     Footer, 
@@ -23,5 +27,9 @@ export {
     TourContent,
     TourContentHeader,
     TourPageItem,
-    TourPageReviews
+    TourPageReviews,
+    DashboardNavigation,
+    DashboardPagination,
+    AdminActiveRequests,
+    AdminHistoryRequests
 };

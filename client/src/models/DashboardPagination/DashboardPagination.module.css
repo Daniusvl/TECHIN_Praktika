@@ -1,0 +1,15 @@
+@import "../../vars.css";
+
+.main{
+    margin: 1em 0;
+    background-color: var(--secondary-bg-color);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination{
+    position: relative;
+    top: 8px;
+}
