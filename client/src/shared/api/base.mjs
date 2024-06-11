@@ -1,7 +1,10 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 
-export const BASE_URL = "http://localhost:1234/";
+// eslint-disable-next-line no-undef
+const CFG_URL = process.env.REACT_APP_SERVER_URL;
+
+export const BASE_URL = `${CFG_URL}${CFG_URL.endsWith("/") ? "" : "/"}`;
 
 const BASE_API_URL = `${BASE_URL }api`;
 
