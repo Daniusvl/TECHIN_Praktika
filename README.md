@@ -6,7 +6,7 @@
 # Start up
 
 # Srver ->
-ENV Variables:
+.env file:
 
 PORT
 
@@ -16,6 +16,6 @@ JWT_ACCESS_TOKEN
 
 
 # Client -> 
-ENV Variables:
+.env file:
 
 REACT_APP_SERVER_URL
