@@ -10,8 +10,8 @@ export const SortBy = ({setValue}) => {
     }, [setValue]);
 
     return (
-        <Select onChange={onChange}>
-            <option value="name" selected>Name</option>
+        <Select defaultValue={"name"} onChange={onChange}>
+            <option value="name">Name</option>
             <option value="price">Price</option>
             <option value="isSingle">Type</option>
             <option value="avgScore">Score</option>

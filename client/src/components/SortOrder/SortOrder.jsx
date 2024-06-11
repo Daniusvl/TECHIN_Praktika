@@ -10,8 +10,8 @@ export const SortOrder = ({setValue}) => {
     }, [setValue]);
 
     return (
-        <Select onChange={onChange}>
-            <option value="false" selected>Ascending</option>
+        <Select defaultValue={"false"} onChange={onChange}>
+            <option value="false">Ascending</option>
             <option value="true">Descending</option>
         </Select>
     );
