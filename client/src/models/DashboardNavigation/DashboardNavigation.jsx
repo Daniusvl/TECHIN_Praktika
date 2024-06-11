@@ -4,20 +4,21 @@ import styles from "./DashboardNavigation.module.css";
 import { Link } from "react-router-dom";
 import { classNames } from "../../shared/classNames.mjs";
 
-// 1 active, 2 history
-export const DashboardNavigation = ({navigation, setNavigation}) => {
+export const DashboardNavigation = ({navigation, setNavigation, links}) => {
 
-    const setActive = useCallback(() => setNavigation(1), [setNavigation]);
-    const setHistory = useCallback(() => setNavigation(2), [setNavigation]);
+    const setActive = useCallback((i) => {
+        return () => setNavigation(i);
+    }, [setNavigation]);
 
     return (
         <div className={styles.main}>
-            <Link className={classNames(styles.link, navigation === 1 ? styles.active : "")} onClick={setActive}>
-                Active
-            </Link>
-            <Link className={classNames(styles.link, navigation === 2 ? styles.active : "")} onClick={setHistory}>
-                History
-            </Link>
+            {
+                links.map((value, i) => 
+                    <Link key={i} className={classNames(styles.link, navigation === i+1 ? styles.active : "")} onClick={setActive(i+1)}>
+                        {value}
+                    </Link>)
+            }
+
         </div>
     );
 };

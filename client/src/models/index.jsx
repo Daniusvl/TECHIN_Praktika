@@ -16,6 +16,7 @@ import { AdminActiveRequests } from "./AdminActiveRequests/AdminActiveRequests";
 import { AdminHistoryRequests } from "./AdminHistoryRequests/AdminHistoryRequests";
 import { UserActiveRequests } from "./UserActiveRequests/UserActiveRequests";
 import { UserHistoryRequests } from "./UserHistoryRequests/UserHistoryRequests";
+import { AdminRequestsPage } from "./AdminRequestsPage/AdminRequestsPage";
 
 export {
     Footer, 
@@ -35,5 +36,6 @@ export {
     AdminActiveRequests,
     AdminHistoryRequests,
     UserActiveRequests,
-    UserHistoryRequests
+    UserHistoryRequests,
+    AdminRequestsPage
 };

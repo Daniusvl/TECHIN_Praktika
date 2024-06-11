@@ -1,13 +1,15 @@
-import React, {useEffect, useState} from "react";
-
-import { DashboardNavigation, DashboardPagination, UserActiveRequests, UserHistoryRequests } from "../../models";
-import { Spinner } from "../../ui";
-
-import styles from "./UserDashboardPage.module.css";
+import React, { useEffect, useState } from "react";
 import { tourCandidateModel } from "../../shared/api/tourCandidateModel";
 
-const UserDashboardPage = () => {
+import { AdminActiveRequests } from "../AdminActiveRequests/AdminActiveRequests";
+import { AdminHistoryRequests } from "../AdminHistoryRequests/AdminHistoryRequests";
+import { DashboardNavigation } from "../DashboardNavigation/DashboardNavigation";
+import { DashboardPagination } from "../DashboardPagination/DashboardPagination";
 
+import styles from "./AdminRequestsPage.module.css";
+import { Spinner } from "../../ui";
+
+export const AdminRequestsPage = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     // 1 active, 2 history
@@ -25,14 +27,16 @@ const UserDashboardPage = () => {
         (async () => {
             setIsLoading(true);
             if(navigation === 1){
-                const {status, data} = await tourCandidateModel.showMyActiveRequests();
+                const {status, data} = await tourCandidateModel.showAllActiveRequests(page);
                 if(status === 200){
-                    setActiveList(data);
+                    setActiveList(data.data);
+                    setPageCount(data.pageCount);
+                    setPage(1);
                 }
 
             }
             else if(navigation === 2){
-                const {status, data} = await tourCandidateModel.showMyHistoryRequests(page);
+                const {status, data} = await tourCandidateModel.showAllHistoryRequests(page);
                 if(status === 200){
                     setHistoryList(data.data);
                     setPageCount(data.pageCount);
@@ -41,17 +45,16 @@ const UserDashboardPage = () => {
             }
             setIsLoading(false);
         })();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [navigation, page, isRefreshed]);
 
     return (
         <div>
             <DashboardNavigation navigation={navigation} setNavigation={setNavigation} links={["Active", "History"]} />
-            {
-                navigation === 2 &&
-                <div>
-                    <DashboardPagination activePage={page} setPage={setPage} lastPage={pageCount} />
-                </div>
-            }
+            <div>
+                <DashboardPagination activePage={page} setPage={setPage} lastPage={pageCount} />
+            </div>
             <div className={styles.mainContent}>
                 {
                     isLoading && 
@@ -62,7 +65,7 @@ const UserDashboardPage = () => {
                 {
                     navigation === 1 && !isLoading && activeList.length === 0 && 
                     <div className={styles.defaultContainer}>
-                        <p>No active requests found</p>
+                        <p>No active requests left</p>
                     </div>
                 }
                 {
@@ -72,11 +75,9 @@ const UserDashboardPage = () => {
                     </div>
                 }
 
-                {navigation === 1 && !isLoading && activeList.length > 0 && <UserActiveRequests list={activeList} triggerRefresh={setIsRefreshed} />}
-                {navigation === 2 && !isLoading && historyList.length > 0 && <UserHistoryRequests list={historyList} triggerRefresh={setIsRefreshed} />}
+                {navigation === 1 && !isLoading && activeList.length > 0 && <AdminActiveRequests list={activeList} triggerRefresh={setIsRefreshed} />}
+                {navigation === 2 && !isLoading && historyList.length > 0 && <AdminHistoryRequests list={historyList}/>}
             </div>
         </div>
     );
 };
-
-export default UserDashboardPage;
