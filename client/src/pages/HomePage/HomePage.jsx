@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { SearchBox, TourFilters, TourContent, TourContentHeader } from "../../models/index";
 
 import Stack from "react-bootstrap/Stack";
@@ -32,7 +32,9 @@ const HomePage = () => {
         resetArgs();
     }, []);
 
+    const controller = useRef();
     useEffect(() => {
+        controller.current = new AbortController();
         (async () => {
             setToursLoading(true);
             setTours([]);
@@ -47,7 +49,8 @@ const HomePage = () => {
                 setFiltersSaved(false);
             }
 
-            const {status, data} = await tourBaseModel.getTourBases(currentPage);
+            
+            const {status, data} = await tourBaseModel.getTourBases(currentPage, controller.current.signal);
             if(status === 200){
                 setTours(data.data);
                 setPageCount(data.pageCount);
@@ -59,10 +62,9 @@ const HomePage = () => {
 
             setToursLoading(false);
             
-            // maybe doesnt work after 1 try
             setFiltersLoading(false);
         })();
-
+        return () => controller.current.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [triggerSearch, sortBy, sortOrder, triggerFilters, currentPage]);
 
@@ -79,7 +81,7 @@ const HomePage = () => {
     return (
         <Stack gap={3}>
             <div className={styles.itemPadding}>
-                <SearchBox searchChanged={searchSave} />
+                <SearchBox searchChanged={searchSave} controller={controller} />
             </div>
             <div className={classNames(styles.main, styles.itemPadding)}>
                 <div className={styles.filters}>

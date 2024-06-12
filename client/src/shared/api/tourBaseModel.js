@@ -68,12 +68,15 @@ export const removeArgs = (...newArgs) => {
 };
 
 export const tourBaseModel = {
-    getTourBases: async (page) => {
+    getTourBases: async (page, signal) => {
         try {
-            const response = await apiClient.get(`/toursBase/all/${page}`, { params: generateQueryParams(args)});
+            const response = await apiClient.get(`/toursBase/all/${page}`, { 
+                params: generateQueryParams(args),
+                signal
+            });
             return modelResponse(response.status, response.data);
         } catch (error) {
-            return modelResponse(error.response.status, error.response.data);
+            return modelResponse(error.response?.status, error.response?.data);
         }
     },
     getTourBaseById: async (id) => {
