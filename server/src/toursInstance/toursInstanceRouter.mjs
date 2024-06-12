@@ -9,5 +9,5 @@ import { validationMiddleware } from "../shared/middleware/validationMiddleware.
 export const toursInstanceRouter = express.Router();
 
 toursInstanceRouter.post("/", [authMiddleware(ADMIN), createTourInstanceValidation, validationMiddleware], toursInstanceController.createTourInstance);
-toursInstanceRouter.delete("/", [authMiddleware(ADMIN), deleteTourInstanceValidation, validationMiddleware], toursInstanceController.deleteTourInstance);
+toursInstanceRouter.delete("/:id", [authMiddleware(ADMIN), deleteTourInstanceValidation, validationMiddleware], toursInstanceController.deleteTourInstance);
 toursInstanceRouter.get("/:tourBaseId", [getAllUpcomingTourBaseTourInstancesValidation, validationMiddleware], toursInstanceController.getAllUpcomingTourBaseTourInstances);

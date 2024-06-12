@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { CreateTourForm, EditTourForm, TourSearchById } from "../../components";
+import { CreateTourForm, EditTourForm, TourSearchById, AdminTourDates } from "../../components";
 import { DashboardNavigation } from "../DashboardNavigation/DashboardNavigation";
 
 import styles from "./TourAdministration.module.css";
@@ -16,7 +16,7 @@ export const TourAdministration = () => {
     return (
         <div>
             <div className={styles.nav}>
-                <DashboardNavigation navigation={navigation} setNavigation={setNavigation} links={["Create new", "Edit existing", "Edit dates"]} />
+                <DashboardNavigation navigation={navigation} setNavigation={setNavigation} links={["Create tour", "Edit tour", "Dates"]} />
             </div>
             {
                 navigation === 1 &&
@@ -28,6 +28,15 @@ export const TourAdministration = () => {
                         <TourSearchById setTour={setTour} searchValue={searchValue} setSearchValue={setSearchValue} />
                     </div>
                     <EditTourForm tour={tour} setTour={setTour} setSearchValue={setSearchValue} />
+                </>
+            }
+            {
+                navigation === 3 && 
+                <>
+                    <div>
+                        <TourSearchById setTour={setTour} searchValue={searchValue} setSearchValue={setSearchValue} />
+                    </div>
+                    <AdminTourDates tour={tour} />
                 </>
             }
 

@@ -12,7 +12,7 @@ export const toursInstanceController = {
 
     deleteTourInstance: async (req, res, next) => {
         try {
-            const {statusCode, data} = await toursInstanceService.deleteTourInstance(req.body);
+            const {statusCode, data} = await toursInstanceService.deleteTourInstance(req.params.id);
             return res.status(statusCode).json(data);
         } catch (error) {
             next(error);

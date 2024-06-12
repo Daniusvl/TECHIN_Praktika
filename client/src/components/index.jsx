@@ -20,6 +20,7 @@ import { UserHistoryRequest } from "./UserHistoryRequest/UserHistoryRequest";
 import { TourSearchById } from "./TourSearchById/TourSearchById";
 import { EditTourForm } from "./EditTourForm/EditTourForm";
 import { CreateTourForm } from "./CreateTourForm/CreateTourForm";
+import { AdminTourDates } from "./AdminTourDates/AdminTourDates";
 
 export {
     FormGroup,
@@ -43,5 +44,6 @@ export {
     UserHistoryRequest,
     TourSearchById,
     EditTourForm,
-    CreateTourForm
+    CreateTourForm,
+    AdminTourDates
 };

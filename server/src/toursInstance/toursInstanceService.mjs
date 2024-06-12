@@ -36,16 +36,8 @@ export const toursInstanceService = {
         return serviceResponse(201, result);
     },
 
-    deleteTourInstance: async (data) => {
-        const {tourBaseId, startDate} = data;
-
-        const {statusCode, data: tourBase} = await toursBaseService.getTourBaseById(tourBaseId);
-
-        if(statusCode !== 200){
-            return serviceResponse(404, TOUR_NOT_FOUND);
-        }
-
-        const tourInstance = await toursInstanceModel.findOneAndDelete({tourBase: tourBase._id, startDate});
+    deleteTourInstance: async (id) => {
+        const tourInstance = await toursInstanceModel.findOneAndDelete({_id: id});
 
         if(!tourInstance){
             return serviceResponse(404, TOUR_DATE_NOT_FOUND);

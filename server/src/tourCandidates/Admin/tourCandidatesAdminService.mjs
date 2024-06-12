@@ -47,7 +47,9 @@ export const tourCandidatesAdminService = {
         }
 
         if(tourCandidate.tourInstance.tourBase.isSingle){
-            const exists = await tourCandidatesModel.findOne({_id: tourCandidateId, status: APPROVED});
+            const exists = await tourCandidatesModel.findOne({tourInstance:{
+                _id: tourCandidate.tourInstance._id
+            }, status: APPROVED});
             if(exists){
                 return serviceResponse(400, SINGLE_TOUR_ALREADY_FILLED);
             }

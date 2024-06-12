@@ -1,7 +1,7 @@
 import { checkSchema } from "express-validator";
 import { isValidMongooseId } from "../shared/commonValidation.mjs";
 
-const tourBaseIdValidation =
+const idValidation =
 {
     custom: isValidMongooseId
 };
@@ -18,7 +18,7 @@ const startDateValidaiton =
 };
 
 export const createTourInstanceValidation = checkSchema({
-    tourBaseId: tourBaseIdValidation,
+    tourBaseId: idValidation,
     startDate: {
         ...startDateValidaiton,
         custom:{
@@ -34,13 +34,15 @@ export const createTourInstanceValidation = checkSchema({
 });
 
 export const deleteTourInstanceValidation = checkSchema({
-    tourBaseId: tourBaseIdValidation,
-    startDate: startDateValidaiton
+    id:{
+        in: ["params"],
+        ...idValidation
+    }
 });
 
 export const getAllUpcomingTourBaseTourInstancesValidation = checkSchema({
     tourBaseId: {
         in: ["params"],
-        ...tourBaseIdValidation
+        ...idValidation
     }
 });
