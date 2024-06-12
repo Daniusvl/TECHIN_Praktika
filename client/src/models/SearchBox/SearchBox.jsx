@@ -29,7 +29,7 @@ export const SearchBox = ({searchChanged}) => {
 
     return (
         <div className={styles.box}>
-            <InputControl className={styles.input} type="text" placeholder="Search..." onChange={handleSearchInputChange} />
+            <InputControl type="text" placeholder="Search..." onChange={handleSearchInputChange} />
         </div>
     );
 };

@@ -3,8 +3,8 @@ import Form from "react-bootstrap/Form";
 
 import styles from "./InputControl.module.css";
 
-export const InputControl = ({type, placeholder, register, onChange}) => {
+export const InputControl = ({register, ...args}) => {
     return (
-        <Form.Control className={styles.input} type={type} placeholder={placeholder} {...register} onChange={onChange}/>
+        <Form.Control className={styles.input} {...register} {...args}/>
     );
 };

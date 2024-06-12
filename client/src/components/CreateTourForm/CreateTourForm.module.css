@@ -1,0 +1,17 @@
+@import "../../vars.css";
+
+.main{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color: var(--secondary-bg-color);
+    border-radius: 2rem;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.form{
+    border: 1px solid gray;
+    padding: 2rem;
+    border-radius: 2rem;
+}

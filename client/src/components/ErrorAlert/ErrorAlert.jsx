@@ -4,7 +4,7 @@ import { AlertBase } from "../../ui";
 
 export const ErrorAlert = (message) => createPortal(
     (
-        <AlertBase variant="danger" heading="Success!">
+        <AlertBase variant="danger" heading="Error!">
             <p>{message}</p>
         </AlertBase>
     ), document.getElementById("alert-placement"));

@@ -81,5 +81,35 @@ export const tourBaseModel = {
         } catch (error) {
             return modelResponse(error.response.status, error.response.data);
         }
+    },
+    createTour: async (body) => {
+        try {
+            const response = await apiClient.post("/toursBase", body, {
+                headers: {
+                    "content-type": "multipart/form-data"
+                }});
+            return modelResponse(response.status, response.data);
+        } catch (error) {
+            return modelResponse(error.response.status, error.response.data);
+        }
+    },
+    updateTour: async (body) => {
+        try {
+            const response = await apiClient.put("/toursBase", body, {
+                headers: {
+                    "content-type": "multipart/form-data"
+                }});
+            return modelResponse(response.status, response.data);
+        } catch (error) {
+            return modelResponse(error.response.status, error.response.data);
+        }
+    },
+    deleteTour: async (id) => {
+        try {
+            const response = await apiClient.delete(`/toursBase/${id}`);
+            return modelResponse(response.status, response.data);
+        } catch (error) {
+            return modelResponse(error.response.status, error.response.data);
+        }
     }
 };

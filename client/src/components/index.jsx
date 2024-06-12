@@ -17,6 +17,9 @@ import { ErrorAlert } from "./ErrorAlert/ErrorAlert";
 import { AdminHistoryRequest } from "./AdminHistoryRequest/AdminHistoryRequest";
 import { UserActiveRequest } from "./UserActiveRequest/UserActiveRequest";
 import { UserHistoryRequest } from "./UserHistoryRequest/UserHistoryRequest";
+import { TourSearchById } from "./TourSearchById/TourSearchById";
+import { EditTourForm } from "./EditTourForm/EditTourForm";
+import { CreateTourForm } from "./CreateTourForm/CreateTourForm";
 
 export {
     FormGroup,
@@ -37,5 +40,8 @@ export {
     ErrorAlert,
     AdminHistoryRequest,
     UserActiveRequest,
-    UserHistoryRequest
+    UserHistoryRequest,
+    TourSearchById,
+    EditTourForm,
+    CreateTourForm
 };

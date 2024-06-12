@@ -1,0 +1,8 @@
+@import "../../vars.css";
+
+.main{
+    background-color: var(--secondary-bg-color);
+    border-radius: 2rem;
+    padding: 1rem;
+    text-align: center;
+}

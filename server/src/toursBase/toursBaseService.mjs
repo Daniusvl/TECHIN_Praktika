@@ -129,10 +129,7 @@ export const toursBaseService = {
     },
 
     getTourBaseById: async (id) => {
-        console.log("id", id);
         const pipeline = await toursBaseModel.aggregate(getByIdPipeline(id));
-
-        console.log("pipeline", pipeline);
 
         const tourBase = pipeline[0];
 
