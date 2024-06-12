@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from "react";
+import React, { useCallback } from "react";
 
 import styles from "./SearchBox.module.css";
 import { InputControl } from "../../ui";
