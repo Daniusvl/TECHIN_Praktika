@@ -29,7 +29,8 @@ export const SearchBox = ({searchChanged, controller}) => {
         };
     }, [searchChanged, controller]);
 
-    const debounced = debounce();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const debounced = useCallback(debounce(), []);
 
     const handleSearchInputChange = useCallback((event) => {
         debounced(event);
