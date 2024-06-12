@@ -4,7 +4,7 @@ import { SearchBox, TourFilters, TourContent, TourContentHeader } from "../../mo
 import Stack from "react-bootstrap/Stack";
 
 import styles from "./HomePage.module.css";
-import { tourBaseModel } from "../../shared/api/tourBaseModel";
+import { resetArgs, tourBaseModel } from "../../shared/api/tourBaseModel";
 import { classNames } from "../../shared/classNames.mjs";
 
 const HomePage = () => {
@@ -27,6 +27,10 @@ const HomePage = () => {
 
     const [maxPriceValue, setMaxPriceValue] = useState(1);
     const [maxDurationValue, setMaxDurationValue] = useState(1);
+
+    useEffect(() => {
+        resetArgs();
+    }, []);
 
     useEffect(() => {
         (async () => {

@@ -57,6 +57,8 @@ export const setArgs = (newArgs) => {
     args = {...args, ...newArgs};
 };
 
+export const resetArgs = () => args = {};
+
 export const removeArgs = (...newArgs) => {
     for (let i = 0; i < newArgs.length; i++) {
         if(newArgs[i] in args){
