@@ -5,17 +5,30 @@
 
 # Start up
 
-# Srver ->
-.env file:
+# Project uses mongodb so the database needs to be created in there
 
-PORT
+# Srver Configuration ->
 
-DB_CONNECTION_STRING
+## Installing dependencies
+cd server -> npm i
 
-JWT_ACCESS_TOKEN
+## .env file:
 
+```
+PORT=1234
 
-# Client -> 
-.env file:
+DB_CONNECTION_STRING="Your_connection_string"
 
-REACT_APP_SERVER_URL
+JWT_ACCESS_TOKEN="Your_Secret"
+```
+
+# Client Configuration -> 
+
+## Installing dependencies
+cd client -> npm i
+
+## .env file:
+
+```
+REACT_APP_SERVER_URL="http://localhost:1234/"
+```
