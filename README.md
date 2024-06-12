@@ -2,12 +2,11 @@
 
 ![Uzduotis](https://github.com/Daniusvl/TECHIN_Praktika/blob/main/ekskursijos_praktikos_uzduotis.png?raw=true)
 
-
 # Start up
 
-# Project uses mongodb so the database needs to be created in there
+## Project uses mongodb so the database needs to be created in there
 
-# Srver Configuration ->
+# Server Configuration ->
 
 ## Installing dependencies
 cd server -> npm i
